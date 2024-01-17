@@ -35,7 +35,7 @@ public:
 
 // --------------------------------------------------------------------------------------------------------------------
 
-UCLASS(BlueprintType)
+UCLASS(Abstract, Blueprintable)
 class DATAONLYFRAGMENTTEMPLATE_API UCk_Processor_DataOnlyFragmentTemplate_UE : public UCk_Ecs_ProcessorScript_Base
 {
     GENERATED_BODY()
@@ -55,7 +55,7 @@ public:
 
 // --------------------------------------------------------------------------------------------------------------------
 
-UCLASS(NotBlueprintable, NotBlueprintType)
+UCLASS(Abstract, Blueprintable, NotBlueprintType)
 class DATAONLYFRAGMENTTEMPLATE_API UCk_DataOnlyFragmentTemplate_ProcessorInjector : public UCk_EcsWorld_ProcessorInjector_Base
 {
     GENERATED_BODY()
@@ -64,6 +64,10 @@ protected:
     auto
     DoInjectProcessors(
         EcsWorldType& InWorld) -> void override;
+
+private:
+    UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess))
+    TSubclassOf<UCk_Processor_DataOnlyFragmentTemplate_UE> _Processor;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -86,18 +90,25 @@ public:
         const FCk_Fragment_DataOnlyFragmentTemplate& InParams);
 
     UFUNCTION(BlueprintPure,
-              Category = "Ck|Utils|Timer",
-              DisplayName="Has Timer")
+              Category = "Ck|Fragments|DataOnlyFragmentTemplate",
+              DisplayName="Has DataOnlyFragmentTemplate")
     static bool
     Has(
         FCk_Handle InHandle);
 
     UFUNCTION(BlueprintPure,
-              Category = "Ck|Utils|Timer",
-              DisplayName="Ensure Has Timer")
+              Category = "Ck|Fragments|DataOnlyFragmentTemplate",
+              DisplayName="Ensure Has DataOnlyFragmentTemplate")
     static bool
     Ensure(
-        FCk_Handle InTimer);
+        FCk_Handle InHandle);
+
+    UFUNCTION(BlueprintPure,
+              Category = "Ck|Fragments|DataOnlyFragmentTemplate",
+              DisplayName="Get DataOnlyFragmentTemplate")
+    static FCk_Fragment_DataOnlyFragmentTemplate
+    Get(
+        FCk_Handle InHandle);
 };
 // --------------------------------------------------------------------------------------------------------------------
 

@@ -31,9 +31,7 @@ auto
         EcsWorldType& InWorld)
     -> void
 {
-    const auto& Processor = UCk_Utils_ProcessorScript_Subsystem_UE::Request_CreateNewProcessorScript(GetWorld(),
-        UCk_Processor_DataOnlyFragmentTemplate_UE::StaticClass());
-
+    const auto& Processor = UCk_Utils_ProcessorScript_Subsystem_UE::Request_CreateNewProcessorScript(GetWorld(), _Processor);
     InWorld.Add(Processor);
 }
 
@@ -46,6 +44,7 @@ auto
         const FCk_Fragment_DataOnlyFragmentTemplate& InParams)
     -> void
 {
+    InHandle.Add<FCk_Fragment_DataOnlyFragmentTemplate>(InParams);
 }
 
 auto
@@ -54,14 +53,29 @@ auto
         FCk_Handle InHandle)
     -> bool
 {
-    return false;
+    return InHandle.Has_All<FCk_Fragment_DataOnlyFragmentTemplate>();
 }
 
 auto
     UCk_Utils_DataOnlyFragmentTemplate_UE::
     Ensure(
-        FCk_Handle InTimer)
+        FCk_Handle InHandle)
     -> bool
 {
-    return false;
+    CK_ENSURE_IF_NOT(Has(InHandle), TEXT("Handle [{}] does NOT have a DataOnlyFragmentTemplate"), InHandle)
+    { return false; }
+
+    return true;
+}
+
+auto
+    UCk_Utils_DataOnlyFragmentTemplate_UE::
+    Get(
+        FCk_Handle InHandle)
+    -> FCk_Fragment_DataOnlyFragmentTemplate
+{
+    if (NOT Ensure(InHandle))
+    { return {}; }
+
+    return InHandle.Get<FCk_Fragment_DataOnlyFragmentTemplate>();
 }
