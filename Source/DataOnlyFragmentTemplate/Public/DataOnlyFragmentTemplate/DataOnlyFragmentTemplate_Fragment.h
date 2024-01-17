@@ -17,7 +17,7 @@ public:
 private:
     UPROPERTY(EditAnywhere, BlueprintReadWrite,
         meta=(AllowPrivateAccess))
-    int32 _Variable;
+    int32 _Variable = 0;
 
 public:
     CK_PROPERTY_GET(_Variable);
