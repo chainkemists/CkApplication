@@ -4,13 +4,13 @@
 
 // --------------------------------------------------------------------------------------------------------------------
 
-DATAONLYFRAGMENTTEMPLATE_API DECLARE_LOG_CATEGORY_EXTERN(DataOnlyFragmentTemplate, Log, All);
+ECSSCRIPTTEMPLATE_API DECLARE_LOG_CATEGORY_EXTERN(EcsScriptTemplate, Log, All);
 
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ck::ecs_template
+namespace ck::ecs_script_template
 {
-    CK_DEFINE_LOG_FUNCTIONS(DataOnlyFragmentTemplate);
+    CK_DEFINE_LOG_FUNCTIONS(EcsScriptTemplate);
 }
 
 // --------------------------------------------------------------------------------------------------------------------

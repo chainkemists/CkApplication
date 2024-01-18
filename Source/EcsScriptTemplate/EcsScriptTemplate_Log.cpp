@@ -1,12 +1,12 @@
-#include "DataOnlyFragmentTemplate_Log.h"
+#include "EcsScriptTemplate_Log.h"
 
 // --------------------------------------------------------------------------------------------------------------------
 
-DEFINE_LOG_CATEGORY(DataOnlyFragmentTemplate);
+DEFINE_LOG_CATEGORY(EcsScriptTemplate);
 
-namespace ck::ecs_template
+namespace ck::ecs_script_template
 {
-	CK_REGISTER_LOG_FUNCTIONS(DataOnlyFragmentTemplate);
+	CK_REGISTER_LOG_FUNCTIONS(EcsScriptTemplate);
 }
 
 // --------------------------------------------------------------------------------------------------------------------
