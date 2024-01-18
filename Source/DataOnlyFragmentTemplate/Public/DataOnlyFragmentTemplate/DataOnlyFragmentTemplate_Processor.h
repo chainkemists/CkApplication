@@ -21,6 +21,35 @@ GENERATED FILE - DO NOT MODIFY
 // --------------------------------------------------------------------------------------------------------------------
 
 UCLASS(Abstract, Blueprintable)
+class DATAONLYFRAGMENTTEMPLATE_API UProcessor_DataOnlyFragmentTemplate_Setup_UE : public UCk_Ecs_ProcessorScript_Base_UE
+{
+    GENERATED_BODY()
+
+public:
+    CK_GENERATED_BODY(UProcessor_DataOnlyFragmentTemplate_Setup_UE);
+
+public:
+    CK_DEFINE_STAT(STAT_ForEachEntity, UProcessor_DataOnlyFragmentTemplate_Setup_UE, FStatGroup_STATGROUP_CkProcessors_Details);
+    CK_DEFINE_STAT(STAT_Tick, UProcessor_DataOnlyFragmentTemplate_Setup_UE, FStatGroup_STATGROUP_CkProcessors);
+
+protected:
+    UFUNCTION(BlueprintNativeEvent)
+    void
+    ForEachEntity(
+        FCk_Time InTime,
+        FCk_Handle InHandle,
+        const FFragment_DataOnlyFragmentTemplate_Params& InDataOnlyFragmentTemplate_Params,
+        UPARAM(ref) FFragment_DataOnlyFragmentTemplate_Current& InDataOnlyFragmentTemplate_Current) const;
+
+public:
+    auto
+    Tick(
+        TimeType InTime) -> void override;
+};
+
+// --------------------------------------------------------------------------------------------------------------------
+
+UCLASS(Abstract, Blueprintable)
 class DATAONLYFRAGMENTTEMPLATE_API UProcessor_DataOnlyFragmentTemplate_UE : public UCk_Ecs_ProcessorScript_Base_UE
 {
     GENERATED_BODY()
@@ -38,14 +67,15 @@ protected:
     static void
     Broadcast_OnUpdate(
         UPARAM(ref) FCk_Handle& InHandle,
-        const FFragment_DataOnlyFragmentTemplate& InDataOnlyFragmentTemplate);
+        const FFragment_DataOnlyFragmentTemplate_Current& InDataOnlyFragmentTemplate);
 
     UFUNCTION(BlueprintNativeEvent)
     void
     ForEachEntity(
         FCk_Time InTime,
         FCk_Handle InHandle,
-        UPARAM(ref) FFragment_DataOnlyFragmentTemplate& InDataOnlyFragmentTemplate) const;
+        const FFragment_DataOnlyFragmentTemplate_Params& InDataOnlyFragmentTemplate_Params,
+        UPARAM(ref) FFragment_DataOnlyFragmentTemplate_Current& InDataOnlyFragmentTemplate_Current) const;
 
 public:
     auto
@@ -55,22 +85,39 @@ public:
 
 // --------------------------------------------------------------------------------------------------------------------
 
-UCLASS(Abstract, Blueprintable, NotBlueprintType)
-class DATAONLYFRAGMENTTEMPLATE_API UProcessorInjector_DataOnlyFragmentTemplate_UE : public UCk_EcsWorld_ProcessorInjector_Base_UE
+UCLASS(Abstract, Blueprintable)
+class DATAONLYFRAGMENTTEMPLATE_API UProcessor_DataOnlyFragmentTemplate_ProcessRequests_UE : public UCk_Ecs_ProcessorScript_Base_UE
 {
     GENERATED_BODY()
 
 public:
-    CK_GENERATED_BODY(UProcessorInjector_DataOnlyFragmentTemplate_UE);
+    CK_GENERATED_BODY(UProcessor_DataOnlyFragmentTemplate_ProcessRequests_UE);
+
+public:
+    CK_DEFINE_STAT(STAT_ForEachEntity, UProcessor_DataOnlyFragmentTemplate_UE, FStatGroup_STATGROUP_CkProcessors_Details);
+    CK_DEFINE_STAT(STAT_Tick, UProcessor_DataOnlyFragmentTemplate_UE, FStatGroup_STATGROUP_CkProcessors);
 
 protected:
-    auto
-    DoInjectProcessors(
-        EcsWorldType& InWorld) -> void override;
+    UFUNCTION(BlueprintCallable,
+        meta=(DefaultToSelf, CompactNodeTitle="Broadcast_OnUpdate"))
+    static void
+    Broadcast_OnUpdate(
+        UPARAM(ref) FCk_Handle& InHandle,
+        const FFragment_DataOnlyFragmentTemplate_Current& InDataOnlyFragmentTemplate);
 
-private:
-    UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess))
-    TSubclassOf<UProcessor_DataOnlyFragmentTemplate_UE> _Processor;
+    UFUNCTION(BlueprintNativeEvent)
+    void
+    ForEachEntity(
+        FCk_Time InTime,
+        FCk_Handle InHandle,
+        const FFragment_DataOnlyFragmentTemplate_Params& InDataOnlyFragmentTemplate_Params,
+        UPARAM(ref) FFragment_DataOnlyFragmentTemplate_Current& InDataOnlyFragmentTemplate_Current,
+        const TArray<FFragment_DataOnlyFragmentTemplate_Request>& InDataOnlyFragmentTemplate_Requests) const;
+
+public:
+    auto
+    Tick(
+        TimeType InTime) -> void override;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
