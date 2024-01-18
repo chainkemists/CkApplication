@@ -1,9 +1,9 @@
 using System.IO;
 using UnrealBuildTool;
 
-public class DataOnlyFragmentTemplate : CkModuleRules
+public class EcsScriptTemplate : CkModuleRules
 {
-    public DataOnlyFragmentTemplate(ReadOnlyTargetRules Target) : base(Target)
+    public EcsScriptTemplate(ReadOnlyTargetRules Target) : base(Target)
     {
         PrivateIncludePaths.AddRange(new string[] {
             // ... add other private include paths required here ...

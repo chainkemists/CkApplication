@@ -3,7 +3,7 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
-class FDataOnlyFragmentTemplateModule : public IModuleInterface
+class FEcsScriptTemplateModule : public IModuleInterface
 {
 public:
 

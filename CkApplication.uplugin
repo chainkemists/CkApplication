@@ -27,7 +27,7 @@
 			]
 		},
 		{
-			"Name": "DataOnlyFragmentTemplate",
+			"Name": "EcsScriptTemplate",
 			"Type": "Runtime",
 			"LoadingPhase": "PreDefault",
 			"WhitelistPlatforms": [

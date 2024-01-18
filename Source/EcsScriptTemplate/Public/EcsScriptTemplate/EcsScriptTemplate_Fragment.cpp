@@ -1,4 +1,4 @@
-#include "DataOnlyFragmentTemplate_UtilsExtensions.h"
+#include "EcsScriptTemplate_Fragment.h"
 
 // --------------------------------------------------------------------------------------------------------------------
 
