@@ -20,7 +20,7 @@ auto
         FCk_Time                                         InTime,
         FCk_Handle                                       InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        FFragment_EcsScriptTemplate_Current&      InEcsScriptTemplate_Current) const
+        FFragment_EcsScriptTemplate_Current&      InEcsScriptTemplate_Current)
     -> void
 {
 }
@@ -81,7 +81,7 @@ auto
         FCk_Time                            InTime,
         FCk_Handle                          InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const
+        FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current)
     -> void
 {
 }
@@ -160,7 +160,7 @@ auto
         FCk_Handle                                       InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         FFragment_EcsScriptTemplate_Current&      InEcsScriptTemplate_Current,
-        const TArray<FFragment_EcsScriptTemplate_Request>& InEcsScriptTemplate_Requests) const
+        const TArray<FFragment_EcsScriptTemplate_Request>& InEcsScriptTemplate_Requests)
     -> void
 {
 }
