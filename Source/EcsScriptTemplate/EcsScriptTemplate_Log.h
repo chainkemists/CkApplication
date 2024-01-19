@@ -8,7 +8,7 @@ ECSSCRIPTTEMPLATE_API DECLARE_LOG_CATEGORY_EXTERN(EcsScriptTemplate, Log, All);
 
 // --------------------------------------------------------------------------------------------------------------------
 
-namespace ck::ecs_script_template
+namespace ecs_script_template
 {
     CK_DEFINE_LOG_FUNCTIONS(EcsScriptTemplate);
 }

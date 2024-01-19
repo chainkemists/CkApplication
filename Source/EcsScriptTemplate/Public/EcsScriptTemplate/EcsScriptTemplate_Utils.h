@@ -86,7 +86,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Make Request from EcsScriptTemplate")
+              DisplayName="Make EcsScriptTemplate Request")
     static void
     Request(
         UPARAM(ref) FCk_Handle& InHandle,

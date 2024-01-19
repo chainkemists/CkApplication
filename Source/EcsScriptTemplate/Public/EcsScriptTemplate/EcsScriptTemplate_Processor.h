@@ -39,7 +39,7 @@ protected:
         FCk_Time InTime,
         FCk_Handle InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const;
+        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current);
 
 public:
     auto
@@ -75,7 +75,7 @@ protected:
         FCk_Time InTime,
         FCk_Handle InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const;
+        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current);
 
 public:
     auto
@@ -112,7 +112,7 @@ protected:
         FCk_Handle InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current,
-        const TArray<FFragment_EcsScriptTemplate_Request>& InEcsScriptTemplate_Requests) const;
+        const TArray<FFragment_EcsScriptTemplate_Request>& InEcsScriptTemplate_Requests);
 
 public:
     auto
