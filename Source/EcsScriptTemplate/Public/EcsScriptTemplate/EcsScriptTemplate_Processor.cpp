@@ -19,7 +19,7 @@ auto
     ForEachEntity_Implementation(
         FCk_Time                                         InTime,
         FCk_Handle                                       InHandle,
-        const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
+        FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         FFragment_EcsScriptTemplate_Current&      InEcsScriptTemplate_Current)
     -> void
 {
@@ -41,7 +41,7 @@ auto
         {
             _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
                 FTag_EcsScriptTemplate_Setup, CK_IGNORE_PENDING_KILL>().ForEach(
-            [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
+            [&](EntityType InEntity, FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
             {
                 CK_STAT(STAT_ForEachEntity);
 
@@ -57,7 +57,7 @@ auto
         {
             _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
                 FTag_EcsScriptTemplate_Setup>().ForEach(
-            [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
+            [&](EntityType InEntity, FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
             {
                 CK_STAT(STAT_ForEachEntity);
 

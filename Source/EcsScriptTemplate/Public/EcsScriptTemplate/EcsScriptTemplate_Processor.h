@@ -38,7 +38,7 @@ protected:
     ForEachEntity(
         FCk_Time InTime,
         FCk_Handle InHandle,
-        const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
+        UPARAM(ref) FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current);
 
 public:
