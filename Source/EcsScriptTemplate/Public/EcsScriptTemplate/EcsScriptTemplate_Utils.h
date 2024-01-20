@@ -49,7 +49,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Add New EcsScriptTemplate")
+              DisplayName="Add Feature - EcsScriptTemplate")
     static void
     Add(
         UPARAM(ref) FCk_Handle& InHandle,
@@ -57,14 +57,14 @@ public:
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Has EcsScriptTemplate")
+              DisplayName="Has Feature - EcsScriptTemplate")
     static bool
     Has(
         const FCk_Handle& InHandle);
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Ensure Has EcsScriptTemplate")
+              DisplayName="Ensure Has Feature - EcsScriptTemplate")
     static bool
     Ensure(
         const FCk_Handle& InHandle);
@@ -78,7 +78,7 @@ public:
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Get EcsScriptTemplate Params")
+              DisplayName="Get EcsScriptTemplate Current")
     static const FFragment_EcsScriptTemplate_Current&
     Get_Current(
         const FCk_Handle& InHandle);
