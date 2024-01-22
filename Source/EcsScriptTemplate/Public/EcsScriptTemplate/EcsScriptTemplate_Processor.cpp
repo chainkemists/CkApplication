@@ -47,6 +47,8 @@ auto
 
                 const auto Handle = HandleType{InEntity, *_Registry};
 
+                _CurrentHandle = Handle;
+
                 if (ProcessEntity_If(Handle))
                 { ForEachEntity(InTime, Handle, InParams, InCurrent); }
             });
@@ -118,6 +120,8 @@ auto
 
                 const auto Handle = HandleType{InEntity, *_Registry};
 
+                _CurrentHandle = Handle;
+
                 if (ProcessEntity_If(Handle))
                 { ForEachEntity(InTime, Handle, InParams, InCurrent); }
             });
@@ -187,6 +191,8 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
+
+                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
                 { ForEachEntity(InTime, Handle, InParams, InCurrent, InRequests); }
