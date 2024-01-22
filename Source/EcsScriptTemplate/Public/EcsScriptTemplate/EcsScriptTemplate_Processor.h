@@ -45,6 +45,10 @@ public:
     auto
     Tick(
         TimeType InTime) -> void override;
+
+private:
+    UPROPERTY(BlueprintReadOnly, meta=(AllowPrivateAccess))
+    FCk_Handle _CurrentHandle;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -81,6 +85,10 @@ public:
     auto
     Tick(
         TimeType InTime) -> void override;
+
+private:
+    UPROPERTY(BlueprintReadOnly, meta=(AllowPrivateAccess))
+    FCk_Handle _CurrentHandle;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -118,6 +126,10 @@ public:
     auto
     Tick(
         TimeType InTime) -> void override;
+
+private:
+    UPROPERTY(BlueprintReadOnly, meta=(AllowPrivateAccess))
+    FCk_Handle _CurrentHandle;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
