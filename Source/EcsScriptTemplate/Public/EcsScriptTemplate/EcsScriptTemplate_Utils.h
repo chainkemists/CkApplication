@@ -4,6 +4,8 @@
 
 #include "CkCore/Macros/CkMacros.h"
 
+#include "CkEcs/Delegates/CkDelegates.h"
+
 #include "CkEcsBasics/CkEcsBasics_Utils.h"
 
 #include "CkSignal/CkSignal_Macros.h"
@@ -49,7 +51,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Add Feature - EcsScriptTemplate")
+              DisplayName="[Add Feature] EcsScriptTemplate")
     static void
     Add(
         UPARAM(ref) FCk_Handle& InHandle,
@@ -57,14 +59,14 @@ public:
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Has Feature - EcsScriptTemplate")
+              DisplayName="[Has Feature] EcsScriptTemplate")
     static bool
     Has(
         const FCk_Handle& InHandle);
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Ensure Has Feature - EcsScriptTemplate")
+              DisplayName="[Ensure Has Feature] EcsScriptTemplate")
     static bool
     Ensure(
         const FCk_Handle& InHandle);
@@ -82,6 +84,16 @@ public:
     static const FFragment_EcsScriptTemplate_Current&
     Get_Current(
         const FCk_Handle& InHandle);
+
+public:
+    UFUNCTION(BlueprintCallable,
+              Category = "Ck|Utils|EcsScriptTemplate",
+              DisplayName="For Each EcsScriptTemplate",
+              meta=(AutoCreateRefTerm="InDelegate"))
+    static void
+    ForEach_EcsScriptTemplate(
+        FCk_Handle InAnyValidHandle,
+        const FCk_Lambda_InHandle& InDelegate);
 
 public:
     UFUNCTION(BlueprintCallable,

@@ -70,6 +70,27 @@ auto
 
 auto
     UUtils_EcsScriptTemplate_UE::
+    ForEach_EcsScriptTemplate(
+        FCk_Handle                 InAnyValidHandle,
+        const FCk_Lambda_InHandle& InDelegate)
+        -> void
+{
+    CK_ENSURE_IF_NOT(ck::IsValid(InAnyValidHandle),
+        TEXT("Unable to iterate over all Entities with the EcsScriptTemplate Feature as the passed in Entity [{}] is INVALID.{}"),
+        InAnyValidHandle, ck::Context(InDelegate.GetFunctionName()))
+    { return ; }
+
+    InAnyValidHandle->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current, CK_IGNORE_PENDING_KILL>().ForEach(
+    [&](FCk_Entity InEntity, FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
+    {
+        const auto Handle = ck::MakeHandle(InEntity, InAnyValidHandle);
+
+        InDelegate.Execute(Handle);
+    });
+}
+
+auto
+    UUtils_EcsScriptTemplate_UE::
     Request(
         FCk_Handle&                                       InHandle,
         const FFragment_EcsScriptTemplate_Request& InRequest)
