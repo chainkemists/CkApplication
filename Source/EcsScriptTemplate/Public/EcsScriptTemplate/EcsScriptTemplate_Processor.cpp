@@ -17,10 +17,10 @@ GENERATED FILE - DO NOT MODIFY
 auto
     UProcessor_EcsScriptTemplate_Setup_UE::
     ForEachEntity_Implementation(
-        FCk_Time                                         InTime,
-        FCk_Handle                                       InHandle,
+        FCk_Time InTime,
+        FCk_Handle InHandle,
         FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        FFragment_EcsScriptTemplate_Current&      InEcsScriptTemplate_Current)
+        FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current)
     -> void
 {
 }
@@ -46,11 +46,12 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-
                 _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
-                { ForEachEntity(InTime, Handle, InParams, InCurrent); }
+                {
+                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                }
             });
 
             break;
@@ -64,14 +65,19 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
+                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
-                { ForEachEntity(InTime, Handle, InParams, InCurrent); }
+                {
+                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                }
             });
+
             break;
         }
     }
 
+    _CurrentHandle = {};
     _Registry->Clear<FTag_EcsScriptTemplate_Setup>();
 }
 
@@ -80,8 +86,8 @@ auto
 auto
     UProcessor_EcsScriptTemplate_Update_UE::
     ForEachEntity_Implementation(
-        FCk_Time                            InTime,
-        FCk_Handle                          InHandle,
+        FCk_Time InTime,
+        FCk_Handle InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current)
     -> void
@@ -91,7 +97,7 @@ auto
 auto
     UProcessor_EcsScriptTemplate_Update_UE::
     Broadcast_OnUpdate(
-        FCk_Handle&                         InHandle,
+        FCk_Handle& InHandle,
         const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate)
     -> void
 {
@@ -119,12 +125,14 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-
                 _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
-                { ForEachEntity(InTime, Handle, InParams, InCurrent); }
+                {
+                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                }
             });
+
             break;
         }
         case ECk_Ecs_ForEach_Policy::AllEntities:
@@ -136,13 +144,19 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
+                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
-                { ForEachEntity(InTime, Handle, InParams, InCurrent); }
+                {
+                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                }
             });
+
             break;
         }
     }
+
+    _CurrentHandle = {};
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -150,7 +164,7 @@ auto
 auto
     UProcessor_EcsScriptTemplate_HandleRequests_UE::
     Broadcast_OnUpdate(
-        FCk_Handle&                                       InHandle,
+        FCk_Handle& InHandle,
         const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate)
         -> void
 {
@@ -160,10 +174,10 @@ auto
 auto
     UProcessor_EcsScriptTemplate_HandleRequests_UE::
     ForEachEntity_Implementation(
-        FCk_Time                                         InTime,
-        FCk_Handle                                       InHandle,
+        FCk_Time InTime,
+        FCk_Handle InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        FFragment_EcsScriptTemplate_Current&      InEcsScriptTemplate_Current,
+        FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current,
         const TArray<FFragment_EcsScriptTemplate_Requests>& InEcsScriptTemplate_Requests)
     -> void
 {
@@ -191,12 +205,14 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-
                 _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
-                { ForEachEntity(InTime, Handle, InParams, InCurrent, InRequests); }
+                {
+                    ForEachEntity(InTime, Handle, InParams, InCurrent, InRequests);
+                }
             });
+
             break;
         }
         case ECk_Ecs_ForEach_Policy::AllEntities:
@@ -209,14 +225,19 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
+                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
-                { ForEachEntity(InTime, Handle, InParams, InCurrent, InRequests); }
+                {
+                    ForEachEntity(InTime, Handle, InParams, InCurrent, InRequests);
+                }
             });
+
             break;
         }
     }
 
+    _CurrentHandle = {};
     _Registry->Clear<TArray<FFragment_EcsScriptTemplate_Requests>>();
 }
 

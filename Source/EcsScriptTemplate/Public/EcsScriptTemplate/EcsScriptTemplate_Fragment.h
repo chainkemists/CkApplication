@@ -23,12 +23,7 @@ public:
 private:
     UPROPERTY(EditAnywhere, BlueprintReadWrite,
         meta=(AllowPrivateAccess))
-    int32 _Variable = 0;
-
-public:
-    CK_PROPERTY_GET(_Variable);
-
-    CK_DEFINE_CONSTRUCTORS(FFragment_EcsScriptTemplate_Params, _Variable);
+    int32 _DummyVariable = 0;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -43,7 +38,9 @@ public:
 
 private:
     // remove once you have own data
-    char _DummyVariable = 0;
+    UPROPERTY(EditAnywhere, BlueprintReadWrite,
+        meta=(AllowPrivateAccess))
+    int32 _DummyVariable = 0;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -57,9 +54,8 @@ public:
     CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Requests);
 
 private:
-
     // remove once you have your own data, if you do NOT have Requests, leave this struct/var as-is
-    char _DummyVariable = 0;
+    int32 _DummyVariable = 0;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
