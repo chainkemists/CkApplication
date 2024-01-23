@@ -75,8 +75,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="For Each EcsScriptTemplate",
-              meta=(AutoCreateRefTerm="InDelegate"))
+              DisplayName="For Each EcsScriptTemplate")
     static void
     ForEach_EcsScriptTemplate(
         FCk_Handle InAnyValidHandle,
@@ -113,13 +112,11 @@ public:
 private:
     static auto
     Get_Params(
-        const FCk_Handle& InHandle)
-    -> const FFragment_EcsScriptTemplate_Params&;
+        const FCk_Handle& InHandle) -> const FFragment_EcsScriptTemplate_Params&;
 
     static auto
     Get_Current(
-        const FCk_Handle& InHandle)
-    -> const FFragment_EcsScriptTemplate_Current&;
+        const FCk_Handle& InHandle) -> const FFragment_EcsScriptTemplate_Current&;
 };
 
 // --------------------------------------------------------------------------------------------------------------------

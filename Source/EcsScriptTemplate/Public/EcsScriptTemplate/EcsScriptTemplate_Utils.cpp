@@ -47,14 +47,14 @@ auto
 auto
     UUtils_EcsScriptTemplate_UE::
     ForEach_EcsScriptTemplate(
-        FCk_Handle                 InAnyValidHandle,
+        FCk_Handle InAnyValidHandle,
         const FCk_Lambda_InHandle& InDelegate)
-        -> void
+    -> void
 {
     CK_ENSURE_IF_NOT(ck::IsValid(InAnyValidHandle),
         TEXT("Unable to iterate over all Entities with the EcsScriptTemplate Feature as the passed in Entity [{}] is INVALID.{}"),
         InAnyValidHandle, ck::Context(InDelegate.GetFunctionName()))
-    { return ; }
+    { return; }
 
     InAnyValidHandle->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current, CK_IGNORE_PENDING_KILL>().ForEach(
     [&](FCk_Entity InEntity, FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
@@ -68,7 +68,7 @@ auto
 auto
     UUtils_EcsScriptTemplate_UE::
     Request(
-        FCk_Handle&                                       InHandle,
+        FCk_Handle& InHandle,
         const FFragment_EcsScriptTemplate_Requests& InRequest)
     -> void
 {
@@ -81,9 +81,9 @@ auto
 auto
     UUtils_EcsScriptTemplate_UE::
     BindTo_OnUpdate(
-        FCk_Handle&                                        InHandle,
-        ECk_Signal_BindingPolicy                           InBehavior,
-        ECk_Signal_PostFireBehavior                        InPostFireBehavior,
+        FCk_Handle& InHandle,
+        ECk_Signal_BindingPolicy InBehavior,
+        ECk_Signal_PostFireBehavior InPostFireBehavior,
         const FDelegate_EcsScriptTemplate_OnUpdate& InDelegate)
     -> void
 {
@@ -99,7 +99,7 @@ auto
 auto
     UUtils_EcsScriptTemplate_UE::
     UnbindFrom_OnUpdate(
-        FCk_Handle&                                        InHandle,
+        FCk_Handle& InHandle,
         const FDelegate_EcsScriptTemplate_OnUpdate& InDelegate)
     -> void
 {
