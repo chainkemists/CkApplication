@@ -1,4 +1,4 @@
-#include "EcsScriptTemplate_UtilsExtensions.h"
+#include "EcsScriptTemplate_UtilsExt.h"
 
 // --------------------------------------------------------------------------------------------------------------------
 

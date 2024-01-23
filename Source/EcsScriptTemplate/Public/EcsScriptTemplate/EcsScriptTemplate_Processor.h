@@ -54,16 +54,16 @@ private:
 // --------------------------------------------------------------------------------------------------------------------
 
 UCLASS(Abstract, Blueprintable)
-class ECSSCRIPTTEMPLATE_API UProcessor_EcsScriptTemplate_UE : public UCk_Ecs_ProcessorScript_Base_UE
+class ECSSCRIPTTEMPLATE_API UProcessor_EcsScriptTemplate_Update_UE : public UCk_Ecs_ProcessorScript_Base_UE
 {
     GENERATED_BODY()
 
 public:
-    CK_GENERATED_BODY(UProcessor_EcsScriptTemplate_UE);
+    CK_GENERATED_BODY(UProcessor_EcsScriptTemplate_Update_UE);
 
 public:
-    CK_DEFINE_STAT(STAT_ForEachEntity, UProcessor_EcsScriptTemplate_UE, FStatGroup_STATGROUP_CkProcessors_Details);
-    CK_DEFINE_STAT(STAT_Tick, UProcessor_EcsScriptTemplate_UE, FStatGroup_STATGROUP_CkProcessors);
+    CK_DEFINE_STAT(STAT_ForEachEntity, UProcessor_EcsScriptTemplate_Update_UE, FStatGroup_STATGROUP_CkProcessors_Details);
+    CK_DEFINE_STAT(STAT_Tick, UProcessor_EcsScriptTemplate_Update_UE, FStatGroup_STATGROUP_CkProcessors);
 
 protected:
     UFUNCTION(BlueprintCallable,
@@ -94,16 +94,16 @@ private:
 // --------------------------------------------------------------------------------------------------------------------
 
 UCLASS(Abstract, Blueprintable)
-class ECSSCRIPTTEMPLATE_API UProcessor_EcsScriptTemplate_ProcessRequests_UE : public UCk_Ecs_ProcessorScript_Base_UE
+class ECSSCRIPTTEMPLATE_API UProcessor_EcsScriptTemplate_HandleRequests_UE : public UCk_Ecs_ProcessorScript_Base_UE
 {
     GENERATED_BODY()
 
 public:
-    CK_GENERATED_BODY(UProcessor_EcsScriptTemplate_ProcessRequests_UE);
+    CK_GENERATED_BODY(UProcessor_EcsScriptTemplate_HandleRequests_UE);
 
 public:
-    CK_DEFINE_STAT(STAT_ForEachEntity, UProcessor_EcsScriptTemplate_UE, FStatGroup_STATGROUP_CkProcessors_Details);
-    CK_DEFINE_STAT(STAT_Tick, UProcessor_EcsScriptTemplate_UE, FStatGroup_STATGROUP_CkProcessors);
+    CK_DEFINE_STAT(STAT_ForEachEntity, UProcessor_EcsScriptTemplate_HandleRequests_UE, FStatGroup_STATGROUP_CkProcessors_Details);
+    CK_DEFINE_STAT(STAT_Tick, UProcessor_EcsScriptTemplate_HandleRequests_UE, FStatGroup_STATGROUP_CkProcessors);
 
 protected:
     UFUNCTION(BlueprintCallable,
