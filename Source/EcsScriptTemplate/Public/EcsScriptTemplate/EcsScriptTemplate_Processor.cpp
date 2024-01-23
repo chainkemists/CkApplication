@@ -164,7 +164,7 @@ auto
         FCk_Handle                                       InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         FFragment_EcsScriptTemplate_Current&      InEcsScriptTemplate_Current,
-        const TArray<FFragment_EcsScriptTemplate_Request>& InEcsScriptTemplate_Requests)
+        const TArray<FFragment_EcsScriptTemplate_Requests>& InEcsScriptTemplate_Requests)
     -> void
 {
 }
@@ -184,9 +184,9 @@ auto
         case ECk_Ecs_ForEach_Policy::OnlyValidEntities:
         {
             _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
-                TArray<FFragment_EcsScriptTemplate_Request>, CK_IGNORE_PENDING_KILL>().ForEach(
+                TArray<FFragment_EcsScriptTemplate_Requests>, CK_IGNORE_PENDING_KILL>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent,
-                const TArray<FFragment_EcsScriptTemplate_Request>& InRequests)
+                const TArray<FFragment_EcsScriptTemplate_Requests>& InRequests)
             {
                 CK_STAT(STAT_ForEachEntity);
 
@@ -202,9 +202,9 @@ auto
         case ECk_Ecs_ForEach_Policy::AllEntities:
         {
             _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
-                TArray<FFragment_EcsScriptTemplate_Request>>().ForEach(
+                TArray<FFragment_EcsScriptTemplate_Requests>>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent,
-                const TArray<FFragment_EcsScriptTemplate_Request>& InRequests)
+                const TArray<FFragment_EcsScriptTemplate_Requests>& InRequests)
             {
                 CK_STAT(STAT_ForEachEntity);
 
@@ -217,7 +217,7 @@ auto
         }
     }
 
-    _Registry->Clear<TArray<FFragment_EcsScriptTemplate_Request>>();
+    _Registry->Clear<TArray<FFragment_EcsScriptTemplate_Requests>>();
 }
 
 // --------------------------------------------------------------------------------------------------------------------

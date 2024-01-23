@@ -49,12 +49,12 @@ private:
 // --------------------------------------------------------------------------------------------------------------------
 
 USTRUCT(BlueprintType)
-struct ECSSCRIPTTEMPLATE_API FFragment_EcsScriptTemplate_Request
+struct ECSSCRIPTTEMPLATE_API FFragment_EcsScriptTemplate_Requests
 {
     GENERATED_BODY()
 
 public:
-    CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Request);
+    CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Requests);
 
 private:
 
