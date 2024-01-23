@@ -78,7 +78,7 @@ auto
 // --------------------------------------------------------------------------------------------------------------------
 
 auto
-    UProcessor_EcsScriptTemplate_UE::
+    UProcessor_EcsScriptTemplate_Update_UE::
     ForEachEntity_Implementation(
         FCk_Time                            InTime,
         FCk_Handle                          InHandle,
@@ -89,7 +89,7 @@ auto
 }
 
 auto
-    UProcessor_EcsScriptTemplate_UE::
+    UProcessor_EcsScriptTemplate_Update_UE::
     Broadcast_OnUpdate(
         FCk_Handle&                         InHandle,
         const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate)
@@ -99,7 +99,7 @@ auto
 }
 
 auto
-    UProcessor_EcsScriptTemplate_UE::
+    UProcessor_EcsScriptTemplate_Update_UE::
     Tick(
         TimeType InTime)
     -> void
@@ -148,7 +148,7 @@ auto
 // --------------------------------------------------------------------------------------------------------------------
 
 auto
-    UProcessor_EcsScriptTemplate_ProcessRequests_UE::
+    UProcessor_EcsScriptTemplate_HandleRequests_UE::
     Broadcast_OnUpdate(
         FCk_Handle&                                       InHandle,
         const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate)
@@ -158,7 +158,7 @@ auto
 }
 
 auto
-    UProcessor_EcsScriptTemplate_ProcessRequests_UE::
+    UProcessor_EcsScriptTemplate_HandleRequests_UE::
     ForEachEntity_Implementation(
         FCk_Time                                         InTime,
         FCk_Handle                                       InHandle,
@@ -170,7 +170,7 @@ auto
 }
 
 auto
-    UProcessor_EcsScriptTemplate_ProcessRequests_UE::
+    UProcessor_EcsScriptTemplate_HandleRequests_UE::
     Tick(
         TimeType InTime)
     -> void

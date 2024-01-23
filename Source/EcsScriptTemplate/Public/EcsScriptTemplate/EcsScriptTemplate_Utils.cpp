@@ -46,30 +46,6 @@ auto
 
 auto
     UUtils_EcsScriptTemplate_UE::
-    Get_Params(
-        const FCk_Handle& InHandle)
-    -> const FFragment_EcsScriptTemplate_Params&
-{
-    if (NOT Ensure(InHandle))
-    {
-        static auto Invalid = FFragment_EcsScriptTemplate_Params{};
-        return Invalid;
-    }
-
-    return InHandle.Get<FFragment_EcsScriptTemplate_Params>();
-}
-
-auto
-    UUtils_EcsScriptTemplate_UE::
-    Get_Current(
-        const FCk_Handle& InHandle)
-    -> const FFragment_EcsScriptTemplate_Current&
-{
-    return InHandle.Get<FFragment_EcsScriptTemplate_Current>();
-}
-
-auto
-    UUtils_EcsScriptTemplate_UE::
     ForEach_EcsScriptTemplate(
         FCk_Handle                 InAnyValidHandle,
         const FCk_Lambda_InHandle& InDelegate)
@@ -96,6 +72,9 @@ auto
         const FFragment_EcsScriptTemplate_Request& InRequest)
     -> void
 {
+    if (NOT Ensure(InHandle))
+    { return; }
+
     InHandle.AddOrGet<TArray<FFragment_EcsScriptTemplate_Request>>().Emplace(InRequest);
 }
 
@@ -129,6 +108,36 @@ auto
 
     UUtils_Signal_EcsScriptTemplate_OnUpdate::Unbind(InHandle, InDelegate);
     UUtils_Signal_EcsScriptTemplate_OnUpdate_PostFireUnbind::Unbind(InHandle, InDelegate);
+}
+
+auto
+    UUtils_EcsScriptTemplate_UE::
+    Get_Params(
+        const FCk_Handle& InHandle)
+    -> const FFragment_EcsScriptTemplate_Params&
+{
+    if (NOT Ensure(InHandle))
+    {
+        static auto Invalid = FFragment_EcsScriptTemplate_Params{};
+        return Invalid;
+    }
+
+    return InHandle.Get<FFragment_EcsScriptTemplate_Params>();
+}
+
+auto
+    UUtils_EcsScriptTemplate_UE::
+    Get_Current(
+        const FCk_Handle& InHandle)
+    -> const FFragment_EcsScriptTemplate_Current&
+{
+    if (NOT Ensure(InHandle))
+    {
+        static auto Invalid = FFragment_EcsScriptTemplate_Current{};
+        return Invalid;
+    }
+
+    return InHandle.Get<FFragment_EcsScriptTemplate_Current>();
 }
 
 // --------------------------------------------------------------------------------------------------------------------

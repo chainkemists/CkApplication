@@ -33,6 +33,7 @@ DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(
     FDelegate_EcsScriptTemplate_OnUpdate_MC,
     FCk_Handle, InHandle,
     FFragment_EcsScriptTemplate_Current, InEcsScriptTemplate);
+
 // --------------------------------------------------------------------------------------------------------------------
 
 CK_DEFINE_SIGNAL_AND_UTILS_WITH_DELEGATE(ECSSCRIPTTEMPLATE_API, EcsScriptTemplate_OnUpdate,
@@ -69,20 +70,6 @@ public:
               DisplayName="[Ensure Has Feature] EcsScriptTemplate")
     static bool
     Ensure(
-        const FCk_Handle& InHandle);
-
-    UFUNCTION(BlueprintPure,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Get EcsScriptTemplate Params")
-    static const FFragment_EcsScriptTemplate_Params&
-    Get_Params(
-        const FCk_Handle& InHandle);
-
-    UFUNCTION(BlueprintPure,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Get EcsScriptTemplate Current")
-    static const FFragment_EcsScriptTemplate_Current&
-    Get_Current(
         const FCk_Handle& InHandle);
 
 public:
@@ -122,6 +109,17 @@ public:
     UnbindFrom_OnUpdate(
         UPARAM(ref) FCk_Handle& InHandle,
         const FDelegate_EcsScriptTemplate_OnUpdate& InDelegate);
+
+private:
+    static auto
+    Get_Params(
+        const FCk_Handle& InHandle)
+    -> const FFragment_EcsScriptTemplate_Params&;
+
+    static auto
+    Get_Current(
+        const FCk_Handle& InHandle)
+    -> const FFragment_EcsScriptTemplate_Current&;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
