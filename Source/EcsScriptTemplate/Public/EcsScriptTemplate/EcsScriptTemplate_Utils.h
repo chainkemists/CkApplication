@@ -89,7 +89,7 @@ public:
     static void
     Request(
         UPARAM(ref) FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Request& InRequest);
+        const FFragment_EcsScriptTemplate_Requests& InRequest);
 
 public:
     UFUNCTION(BlueprintCallable,
