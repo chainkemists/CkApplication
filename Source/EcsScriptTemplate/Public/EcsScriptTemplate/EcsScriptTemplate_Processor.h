@@ -67,8 +67,8 @@ public:
 
 protected:
     UFUNCTION(BlueprintCallable,
-        meta=(DefaultToSelf, CompactNodeTitle="Broadcast_OnUpdate"))
-    static void
+        meta=(DefaultToSelf="Target", HidePin = "Target", CompactNodeTitle="[EcsScriptTemplate] Broadcast OnUpdate"))
+    void
     Broadcast_OnUpdate(
         UPARAM(ref) FCk_Handle& InHandle,
         const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate);
@@ -107,8 +107,8 @@ public:
 
 protected:
     UFUNCTION(BlueprintCallable,
-        meta=(DefaultToSelf, CompactNodeTitle="Broadcast_OnUpdate"))
-    static void
+        meta=(DefaultToSelf="Target", HidePin="Target", CompactNodeTitle="[EcsScriptTemplate] Broadcast OnUpdate"))
+    void
     Broadcast_OnUpdate(
         UPARAM(ref) FCk_Handle& InHandle,
         const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate);
