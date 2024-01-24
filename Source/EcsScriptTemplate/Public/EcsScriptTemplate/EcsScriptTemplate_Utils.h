@@ -50,6 +50,9 @@ public:
     CK_GENERATED_BODY(UUtils_EcsScriptTemplate_UE);
 
 public:
+    friend class UUtilsExt_EcsScriptTemplate_UE;
+
+public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
               DisplayName="[Add Feature] EcsScriptTemplate")

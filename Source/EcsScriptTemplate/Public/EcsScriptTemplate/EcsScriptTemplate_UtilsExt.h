@@ -26,7 +26,7 @@ public:
     // - returning fragments directly (return individual pieces of it instead)
     // - mutating fragments directly (that should be done in the processor)
 
-    //FUNCTION(BlueprintPure,
+    //UFUNCTION(BlueprintPure,
     //    Category = "Ck|Utils|EcsScriptTemplate",
     //    DisplayName="Getter Display Name")
     //static const X&
