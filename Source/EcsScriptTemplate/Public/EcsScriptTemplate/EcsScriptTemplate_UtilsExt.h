@@ -25,13 +25,27 @@ public:
     // Avoid:
     // - returning fragments directly (return individual pieces of it instead)
     // - mutating fragments directly (that should be done in the processor)
+    // - make individual requests and avoid exposing the Requests fragment directly
 
+    // -----------------------
+    // SAMPLE GETTER
+    // -----------------------
     //UFUNCTION(BlueprintPure,
     //    Category = "Ck|Utils|EcsScriptTemplate",
     //    DisplayName="Getter Display Name")
     //static const X&
     //Get_X(
     //    const FCk_Handle& InHandle);
+
+    // -----------------------
+    // SAMPLE REQUEST FUNCTION
+    // -----------------------
+    //UFUNCTION(BlueprintCallable,
+    //          Category = "Ck|Utils|EcsScriptTemplate",
+    //          DisplayName="Request X")
+    //static void
+    //Request_X(
+    //    UPARAM(ref) FCk_Handle& InHandle, ...);
 };
 
 // --------------------------------------------------------------------------------------------------------------------
