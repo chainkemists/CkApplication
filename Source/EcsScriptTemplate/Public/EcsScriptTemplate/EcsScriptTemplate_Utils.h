@@ -12,6 +12,8 @@
 
 #include "EcsScriptTemplate/EcsScriptTemplate_Fragment.h"
 
+#include <InstancedStruct.h>
+
 #include "EcsScriptTemplate_Utils.generated.h"
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -78,10 +80,12 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[EcsScriptTemplate] For Each")
+              DisplayName="[EcsScriptTemplate] For Each",
+              meta=(AutoCreateRefTerm="InOptionalPayload"))
     static void
-    ForEach_EcsScriptTemplate(
+    ForEach(
         FCk_Handle InAnyValidHandle,
+        const FInstancedStruct& InOptionalPayload,
         const FCk_Lambda_InHandle& InDelegate);
 
 public:

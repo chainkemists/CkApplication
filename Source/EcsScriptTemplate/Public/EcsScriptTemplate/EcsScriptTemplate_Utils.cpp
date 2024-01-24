@@ -46,8 +46,9 @@ auto
 
 auto
     UUtils_EcsScriptTemplate_UE::
-    ForEach_EcsScriptTemplate(
+    ForEach(
         FCk_Handle InAnyValidHandle,
+        const FInstancedStruct& InOptionalPayload,
         const FCk_Lambda_InHandle& InDelegate)
     -> void
 {
@@ -61,7 +62,7 @@ auto
     {
         const auto Handle = ck::MakeHandle(InEntity, InAnyValidHandle);
 
-        InDelegate.Execute(Handle);
+        InDelegate.Execute(Handle, InOptionalPayload);
     });
 }
 
