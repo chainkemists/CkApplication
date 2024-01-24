@@ -16,17 +16,6 @@ GENERATED FILE - DO NOT MODIFY
 
 auto
     UProcessor_EcsScriptTemplate_Setup_UE::
-    ForEachEntity_Implementation(
-        FCk_Time InTime,
-        FCk_Handle InHandle,
-        FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current)
-    -> void
-{
-}
-
-auto
-    UProcessor_EcsScriptTemplate_Setup_UE::
     Tick(
         TimeType InTime)
     -> void
@@ -82,17 +71,6 @@ auto
 }
 
 // --------------------------------------------------------------------------------------------------------------------
-
-auto
-    UProcessor_EcsScriptTemplate_Update_UE::
-    ForEachEntity_Implementation(
-        FCk_Time InTime,
-        FCk_Handle InHandle,
-        const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current)
-    -> void
-{
-}
 
 auto
     UProcessor_EcsScriptTemplate_Update_UE::
@@ -169,18 +147,6 @@ auto
         -> void
 {
     UUtils_Signal_EcsScriptTemplate_OnUpdate::Broadcast(InHandle, ck::MakePayload(InHandle, InEcsScriptTemplate));
-}
-
-auto
-    UProcessor_EcsScriptTemplate_HandleRequests_UE::
-    ForEachEntity_Implementation(
-        FCk_Time InTime,
-        FCk_Handle InHandle,
-        const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current,
-        const TArray<FFragment_EcsScriptTemplate_Requests>& InEcsScriptTemplate_Requests)
-    -> void
-{
 }
 
 auto

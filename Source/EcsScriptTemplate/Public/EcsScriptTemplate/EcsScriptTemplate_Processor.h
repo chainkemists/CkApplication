@@ -33,13 +33,13 @@ public:
     CK_DEFINE_STAT(STAT_Tick, UProcessor_EcsScriptTemplate_Setup_UE, FStatGroup_STATGROUP_CkProcessors);
 
 protected:
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintImplementableEvent)
     void
     ForEachEntity(
         FCk_Time InTime,
         FCk_Handle InHandle,
         UPARAM(ref) FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current);
+        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const;
 
 public:
     auto
@@ -73,13 +73,13 @@ protected:
         UPARAM(ref) FCk_Handle& InHandle,
         const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate);
 
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintImplementableEvent)
     void
     ForEachEntity(
         FCk_Time InTime,
         FCk_Handle InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
-        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current);
+        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const;
 
 public:
     auto
@@ -113,14 +113,14 @@ protected:
         UPARAM(ref) FCk_Handle& InHandle,
         const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate);
 
-    UFUNCTION(BlueprintNativeEvent)
+    UFUNCTION(BlueprintImplementableEvent)
     void
     ForEachEntity(
         FCk_Time InTime,
         FCk_Handle InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current,
-        const TArray<FFragment_EcsScriptTemplate_Requests>& InEcsScriptTemplate_Requests);
+        const TArray<FFragment_EcsScriptTemplate_Requests>& InEcsScriptTemplate_Requests) const;
 
 public:
     auto
