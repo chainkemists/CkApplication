@@ -115,7 +115,7 @@ private:
     static auto
     Request(
         FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Requests& InRequest) -> void;
+        const FFragment_EcsScriptTemplate_Request& InRequest) -> void;
 };
 
 // --------------------------------------------------------------------------------------------------------------------

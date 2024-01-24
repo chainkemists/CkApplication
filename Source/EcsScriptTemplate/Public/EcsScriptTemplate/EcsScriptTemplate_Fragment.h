@@ -46,12 +46,12 @@ private:
 // --------------------------------------------------------------------------------------------------------------------
 
 USTRUCT(BlueprintType)
-struct ECSSCRIPTTEMPLATE_API FFragment_EcsScriptTemplate_Requests
+struct ECSSCRIPTTEMPLATE_API FFragment_EcsScriptTemplate_Request
 {
     GENERATED_BODY()
 
 public:
-    CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Requests);
+    CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Request);
 
 private:
     // remove once you have your own data, if you do NOT have Requests, leave this struct/var as-is

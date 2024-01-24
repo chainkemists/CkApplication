@@ -164,9 +164,9 @@ auto
         case ECk_Ecs_ForEach_Policy::OnlyValidEntities:
         {
             _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
-                TArray<FFragment_EcsScriptTemplate_Requests>, CK_IGNORE_PENDING_KILL>().ForEach(
+                TArray<FFragment_EcsScriptTemplate_Request>, CK_IGNORE_PENDING_KILL>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent,
-                const TArray<FFragment_EcsScriptTemplate_Requests>& InRequests)
+                const TArray<FFragment_EcsScriptTemplate_Request>& InRequests)
             {
                 CK_STAT(STAT_ForEachEntity);
 
@@ -184,9 +184,9 @@ auto
         case ECk_Ecs_ForEach_Policy::AllEntities:
         {
             _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
-                TArray<FFragment_EcsScriptTemplate_Requests>>().ForEach(
+                TArray<FFragment_EcsScriptTemplate_Request>>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent,
-                const TArray<FFragment_EcsScriptTemplate_Requests>& InRequests)
+                const TArray<FFragment_EcsScriptTemplate_Request>& InRequests)
             {
                 CK_STAT(STAT_ForEachEntity);
 
@@ -204,7 +204,7 @@ auto
     }
 
     _CurrentHandle = {};
-    _Registry->Clear<TArray<FFragment_EcsScriptTemplate_Requests>>();
+    _Registry->Clear<TArray<FFragment_EcsScriptTemplate_Request>>();
 }
 
 // --------------------------------------------------------------------------------------------------------------------
