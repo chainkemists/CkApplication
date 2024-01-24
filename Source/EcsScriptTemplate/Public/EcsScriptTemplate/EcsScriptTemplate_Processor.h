@@ -67,11 +67,13 @@ public:
 
 protected:
     UFUNCTION(BlueprintCallable,
-        meta=(DefaultToSelf="Target", HidePin = "Target", CompactNodeTitle="[EcsScriptTemplate] Broadcast OnUpdate"))
+        BlueprintPure = false,
+        DisplayName = "[EcsScriptTemplate] Broadcast OnUpdate",
+        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnUpdate"))
     void
     Broadcast_OnUpdate(
         UPARAM(ref) FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate);
+        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate) const;
 
     UFUNCTION(BlueprintImplementableEvent)
     void
@@ -107,11 +109,13 @@ public:
 
 protected:
     UFUNCTION(BlueprintCallable,
-        meta=(DefaultToSelf="Target", HidePin="Target", CompactNodeTitle="[EcsScriptTemplate] Broadcast OnUpdate"))
+        BlueprintPure = false,
+        DisplayName = "[EcsScriptTemplate] Broadcast OnUpdate",
+        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnUpdate"))
     void
     Broadcast_OnUpdate(
         UPARAM(ref) FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate);
+        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate) const;
 
     UFUNCTION(BlueprintImplementableEvent)
     void

@@ -76,7 +76,7 @@ auto
     UProcessor_EcsScriptTemplate_Update_UE::
     Broadcast_OnUpdate(
         FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate)
+        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate) const
     -> void
 {
     UUtils_Signal_EcsScriptTemplate_OnUpdate::Broadcast(InHandle, ck::MakePayload(InHandle, InEcsScriptTemplate));
@@ -143,7 +143,7 @@ auto
     UProcessor_EcsScriptTemplate_HandleRequests_UE::
     Broadcast_OnUpdate(
         FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate)
+        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate) const
         -> void
 {
     UUtils_Signal_EcsScriptTemplate_OnUpdate::Broadcast(InHandle, ck::MakePayload(InHandle, InEcsScriptTemplate));
