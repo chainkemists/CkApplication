@@ -87,15 +87,6 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="Make EcsScriptTemplate Request")
-    static void
-    Request(
-        UPARAM(ref) FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Requests& InRequest);
-
-public:
-    UFUNCTION(BlueprintCallable,
-              Category = "Ck|Utils|EcsScriptTemplate",
               DisplayName = "Bind To OnEcsScriptTemplate Updated")
     static void
     BindTo_OnUpdate(
@@ -120,6 +111,11 @@ private:
     static auto
     Get_Current(
         const FCk_Handle& InHandle) -> const FFragment_EcsScriptTemplate_Current&;
+
+    static auto
+    Request(
+        FCk_Handle& InHandle,
+        const FFragment_EcsScriptTemplate_Requests& InRequest) -> void;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
