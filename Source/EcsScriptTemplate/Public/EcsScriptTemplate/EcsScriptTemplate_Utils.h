@@ -55,7 +55,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[Add Feature] EcsScriptTemplate")
+              DisplayName="[EcsScriptTemplate] Add Feature")
     static void
     Add(
         UPARAM(ref) FCk_Handle& InHandle,
@@ -63,14 +63,14 @@ public:
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[Has Feature] EcsScriptTemplate")
+              DisplayName="[EcsScriptTemplate] Has Feature")
     static bool
     Has(
         const FCk_Handle& InHandle);
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[Ensure Has Feature] EcsScriptTemplate")
+              DisplayName="[EcsScriptTemplate] Ensure Has Feature")
     static bool
     Ensure(
         const FCk_Handle& InHandle);
@@ -78,7 +78,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="For Each EcsScriptTemplate")
+              DisplayName="[EcsScriptTemplate] For Each")
     static void
     ForEach_EcsScriptTemplate(
         FCk_Handle InAnyValidHandle,
@@ -87,7 +87,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName = "Bind To OnEcsScriptTemplate Updated")
+              DisplayName = "[EcsScriptTemplate] Bind To OnUpdate")
     static void
     BindTo_OnUpdate(
         UPARAM(ref) FCk_Handle& InHandle,
@@ -97,7 +97,7 @@ public:
 
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName = "Unbind From OnEcsScriptTemplate Updated")
+              DisplayName = "[EcsScriptTemplate] Unbind From OnUpdate")
     static void
     UnbindFrom_OnUpdate(
         UPARAM(ref) FCk_Handle& InHandle,
