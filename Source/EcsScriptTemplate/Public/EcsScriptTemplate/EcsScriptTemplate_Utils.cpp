@@ -2,6 +2,8 @@
 
 #include "CkEcs/Processor/CkProcessorScript_Subsystem.h"
 
+#include "EcsScriptTemplate/EcsScriptTemplate_Processor.h"
+
 // --------------------------------------------------------------------------------------------------------------------
 /*
 
@@ -70,13 +72,13 @@ auto
     UUtils_EcsScriptTemplate_UE::
     Request(
         FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Request& InRequest)
+        const FInstancedStruct& InRequest)
     -> void
 {
     if (NOT Ensure(InHandle))
     { return; }
 
-    InHandle.AddOrGet<TArray<FFragment_EcsScriptTemplate_Request>>().Emplace(InRequest);
+    InHandle.AddOrGet<TArray<FFragment_EcsScriptTemplate_Request>>().Emplace(FFragment_EcsScriptTemplate_Request{InRequest});
 }
 
 auto

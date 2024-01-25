@@ -1,14 +1,12 @@
 #pragma once
 
+#include "InstancedStruct.h"
+
 #include "CkCore/Macros/CkMacros.h"
 
 #include "CkEcs/Tag/CkTag.h"
 
 #include "EcsScriptTemplate_Fragment.generated.h"
-
-// --------------------------------------------------------------------------------------------------------------------
-
-CK_DEFINE_ECS_TAG(FTag_EcsScriptTemplate_Setup);
 
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -40,21 +38,6 @@ private:
     // remove once you have own data
     UPROPERTY(EditAnywhere, BlueprintReadWrite,
         meta=(AllowPrivateAccess))
-    int32 _DummyVariable = 0;
-};
-
-// --------------------------------------------------------------------------------------------------------------------
-
-USTRUCT(BlueprintType)
-struct ECSSCRIPTTEMPLATE_API FFragment_EcsScriptTemplate_Request
-{
-    GENERATED_BODY()
-
-public:
-    CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Request);
-
-private:
-    // remove once you have your own data, if you do NOT have Requests, leave this struct/var as-is
     int32 _DummyVariable = 0;
 };
 

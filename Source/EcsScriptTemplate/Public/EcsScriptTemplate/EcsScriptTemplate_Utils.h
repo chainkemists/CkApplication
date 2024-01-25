@@ -88,6 +88,16 @@ public:
         const FInstancedStruct& InOptionalPayload,
         const FCk_Lambda_InHandle& InDelegate);
 
+
+public:
+    UFUNCTION(BlueprintCallable,
+              Category = "Ck|Utils|EcsScriptTemplate",
+              DisplayName="[EcsScriptTemplate] Request Update")
+    static void
+    Request(
+        UPARAM(ref) FCk_Handle& InHandle,
+        const FInstancedStruct& InRequest);
+
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
@@ -115,11 +125,6 @@ private:
     static auto
     Get_Current(
         const FCk_Handle& InHandle) -> const FFragment_EcsScriptTemplate_Current&;
-
-    static auto
-    Request(
-        FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Request& InRequest) -> void;
 };
 
 // --------------------------------------------------------------------------------------------------------------------

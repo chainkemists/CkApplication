@@ -18,6 +18,30 @@
 GENERATED FILE - DO NOT MODIFY
 
 */
+
+// --------------------------------------------------------------------------------------------------------------------
+
+CK_DEFINE_ECS_TAG(FTag_EcsScriptTemplate_Setup);
+
+// --------------------------------------------------------------------------------------------------------------------
+
+USTRUCT(BlueprintType)
+struct ECSSCRIPTTEMPLATE_API FFragment_EcsScriptTemplate_Request
+{
+    GENERATED_BODY()
+
+public:
+    CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Request);
+
+private:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite,
+        meta=(AllowPrivateAccess))
+    FInstancedStruct _Request;
+
+public:
+    CK_DEFINE_CONSTRUCTORS(FFragment_EcsScriptTemplate_Request, _Request);
+};
+
 // --------------------------------------------------------------------------------------------------------------------
 
 UCLASS(Abstract, Blueprintable)
