@@ -72,8 +72,8 @@ protected:
         meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnUpdate"))
     void
     Broadcast_OnUpdate(
-        UPARAM(ref) FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate) const;
+        const FCk_Handle& InHandle,
+        const FInstancedStruct& InOptionalPayload) const;
 
     UFUNCTION(BlueprintImplementableEvent)
     void
@@ -114,8 +114,8 @@ protected:
         meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnUpdate"))
     void
     Broadcast_OnUpdate(
-        UPARAM(ref) FCk_Handle& InHandle,
-        const FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate) const;
+        const FCk_Handle& InHandle,
+        const FInstancedStruct& InOptionalPayload) const;
 
     UFUNCTION(BlueprintImplementableEvent)
     void

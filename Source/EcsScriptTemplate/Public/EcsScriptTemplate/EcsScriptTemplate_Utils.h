@@ -29,17 +29,17 @@ GENERATED FILE - DO NOT MODIFY
 DECLARE_DYNAMIC_DELEGATE_TwoParams(
     FDelegate_EcsScriptTemplate_OnUpdate,
     FCk_Handle, InHandle,
-    FFragment_EcsScriptTemplate_Current, InEcsScriptTemplate);
+    FInstancedStruct, InOptionalPayload);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(
     FDelegate_EcsScriptTemplate_OnUpdate_MC,
     FCk_Handle, InHandle,
-    FFragment_EcsScriptTemplate_Current, InEcsScriptTemplate);
+    FInstancedStruct, InOptionalPayload);
 
 // --------------------------------------------------------------------------------------------------------------------
 
 CK_DEFINE_SIGNAL_AND_UTILS_WITH_DELEGATE(ECSSCRIPTTEMPLATE_API, EcsScriptTemplate_OnUpdate,
-    FDelegate_EcsScriptTemplate_OnUpdate_MC, FCk_Handle, FFragment_EcsScriptTemplate_Current);
+    FDelegate_EcsScriptTemplate_OnUpdate_MC, FCk_Handle, FInstancedStruct);
 
 // --------------------------------------------------------------------------------------------------------------------
 
