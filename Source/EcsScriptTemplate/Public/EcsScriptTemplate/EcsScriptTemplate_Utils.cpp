@@ -78,7 +78,7 @@ auto
     if (NOT Ensure(InHandle))
     { return; }
 
-    InHandle.AddOrGet<TArray<FFragment_EcsScriptTemplate_Request>>().Emplace(FFragment_EcsScriptTemplate_Request{InRequest});
+    InHandle.AddOrGet<FFragment_EcsScriptTemplate_Requests>()._Requests.Emplace(InRequest);
 }
 
 auto
