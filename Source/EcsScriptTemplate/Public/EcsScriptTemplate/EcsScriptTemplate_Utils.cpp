@@ -83,11 +83,11 @@ auto
 
 auto
     UUtils_EcsScriptTemplate_UE::
-    BindTo_OnUpdate(
+    BindTo_OnDataChanged(
         FCk_Handle& InHandle,
         ECk_Signal_BindingPolicy InBehavior,
         ECk_Signal_PostFireBehavior InPostFireBehavior,
-        const FDelegate_EcsScriptTemplate_OnUpdate& InDelegate)
+        const FDelegate_EcsScriptTemplate_OnDataChanged& InDelegate)
     -> void
 {
     if (NOT Ensure(InHandle))
@@ -101,9 +101,9 @@ auto
 
 auto
     UUtils_EcsScriptTemplate_UE::
-    UnbindFrom_OnUpdate(
+    UnbindFrom_OnDataChanged(
         FCk_Handle& InHandle,
-        const FDelegate_EcsScriptTemplate_OnUpdate& InDelegate)
+        const FDelegate_EcsScriptTemplate_OnDataChanged& InDelegate)
     -> void
 {
     if (NOT Ensure(InHandle))
