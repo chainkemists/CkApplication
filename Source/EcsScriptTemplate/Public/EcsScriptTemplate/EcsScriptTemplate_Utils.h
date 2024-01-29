@@ -27,19 +27,19 @@ GENERATED FILE - DO NOT MODIFY
 // --------------------------------------------------------------------------------------------------------------------
 
 DECLARE_DYNAMIC_DELEGATE_TwoParams(
-    FDelegate_EcsScriptTemplate_OnUpdate,
+    FDelegate_EcsScriptTemplate_OnDataChanged,
     FCk_Handle, InHandle,
     FInstancedStruct, InOptionalPayload);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(
-    FDelegate_EcsScriptTemplate_OnUpdate_MC,
+    FDelegate_EcsScriptTemplate_OnDataChanged_MC,
     FCk_Handle, InHandle,
     FInstancedStruct, InOptionalPayload);
 
 // --------------------------------------------------------------------------------------------------------------------
 
 CK_DEFINE_SIGNAL_AND_UTILS_WITH_DELEGATE(ECSSCRIPTTEMPLATE_API, EcsScriptTemplate_OnUpdate,
-    FDelegate_EcsScriptTemplate_OnUpdate_MC, FCk_Handle, FInstancedStruct);
+    FDelegate_EcsScriptTemplate_OnDataChanged_MC, FCk_Handle, FInstancedStruct);
 
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -57,7 +57,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[EcsScriptTemplate] Add Feature")
+              DisplayName="[Ck][EcsScriptTemplate] Add Feature")
     static void
     Add(
         UPARAM(ref) FCk_Handle& InHandle,
@@ -65,14 +65,14 @@ public:
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[EcsScriptTemplate] Has Feature")
+              DisplayName="[Ck][EcsScriptTemplate] Has Feature")
     static bool
     Has(
         const FCk_Handle& InHandle);
 
     UFUNCTION(BlueprintPure,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[EcsScriptTemplate] Ensure Has Feature")
+              DisplayName="[Ck][EcsScriptTemplate] Ensure Has Feature")
     static bool
     Ensure(
         const FCk_Handle& InHandle);
@@ -80,7 +80,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[EcsScriptTemplate] For Each",
+              DisplayName="[Ck][EcsScriptTemplate] For Each",
               meta=(AutoCreateRefTerm="InOptionalPayload"))
     static void
     ForEach(
@@ -92,7 +92,7 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[EcsScriptTemplate] Request Update")
+              DisplayName="[Ck][EcsScriptTemplate] Add Request")
     static void
     Request(
         UPARAM(ref) FCk_Handle& InHandle,
@@ -101,21 +101,21 @@ public:
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName = "[EcsScriptTemplate] Bind To OnUpdate")
+              DisplayName = "[Ck][EcsScriptTemplate] Bind To OnDataChanged")
     static void
-    BindTo_OnUpdate(
+    BindTo_OnDataChanged(
         UPARAM(ref) FCk_Handle& InHandle,
         ECk_Signal_BindingPolicy InBehavior,
         ECk_Signal_PostFireBehavior InPostFireBehavior,
-        const FDelegate_EcsScriptTemplate_OnUpdate& InDelegate);
+        const FDelegate_EcsScriptTemplate_OnDataChanged& InDelegate);
 
     UFUNCTION(BlueprintCallable,
               Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName = "[EcsScriptTemplate] Unbind From OnUpdate")
+              DisplayName = "[Ck][EcsScriptTemplate] Unbind From OnDataChanged")
     static void
-    UnbindFrom_OnUpdate(
+    UnbindFrom_OnDataChanged(
         UPARAM(ref) FCk_Handle& InHandle,
-        const FDelegate_EcsScriptTemplate_OnUpdate& InDelegate);
+        const FDelegate_EcsScriptTemplate_OnDataChanged& InDelegate);
 
 private:
     static auto

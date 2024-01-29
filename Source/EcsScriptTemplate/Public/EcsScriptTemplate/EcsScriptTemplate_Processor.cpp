@@ -71,7 +71,7 @@ auto
 
 auto
     UProcessor_EcsScriptTemplate_Update_UE::
-    Broadcast_OnUpdate(
+    Broadcast_OnDataChanged(
         const FCk_Handle& InHandle,
         const FInstancedStruct& InOptionalPayload) const
     -> void
@@ -134,7 +134,7 @@ auto
 
 auto
     UProcessor_EcsScriptTemplate_HandleRequests_UE::
-    Broadcast_OnUpdate(
+    Broadcast_OnDataChanged(
         const FCk_Handle& InHandle,
         const FInstancedStruct& InOptionalPayload) const
         -> void

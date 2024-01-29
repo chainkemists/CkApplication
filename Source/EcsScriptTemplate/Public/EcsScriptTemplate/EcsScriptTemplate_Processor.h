@@ -91,10 +91,10 @@ public:
 protected:
     UFUNCTION(BlueprintCallable,
         BlueprintPure = false,
-        DisplayName = "[EcsScriptTemplate] Broadcast OnUpdate",
-        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnUpdate"))
+        DisplayName = "[EcsScriptTemplate] Broadcast OnDataChanged",
+        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnDataChanged"))
     void
-    Broadcast_OnUpdate(
+    Broadcast_OnDataChanged(
         const FCk_Handle& InHandle,
         const FInstancedStruct& InOptionalPayload) const;
 
@@ -129,10 +129,10 @@ public:
 protected:
     UFUNCTION(BlueprintCallable,
         BlueprintPure = false,
-        DisplayName = "[EcsScriptTemplate] Broadcast OnUpdate",
-        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnUpdate"))
+        DisplayName = "[EcsScriptTemplate] Broadcast OnDataChanged",
+        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnDataChanged"))
     void
-    Broadcast_OnUpdate(
+    Broadcast_OnDataChanged(
         const FCk_Handle& InHandle,
         const FInstancedStruct& InOptionalPayload) const;
 
