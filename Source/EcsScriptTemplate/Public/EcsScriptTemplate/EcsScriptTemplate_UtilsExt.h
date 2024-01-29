@@ -32,20 +32,10 @@ public:
     // -----------------------
     //UFUNCTION(BlueprintPure,
     //    Category = "Ck|Utils|EcsScriptTemplate",
-    //    DisplayName="Getter Display Name")
+    //    DisplayName="[Ck][EcsScriptTemplate] Getter Display Name")
     //static const X&
     //Get_X(
     //    const FCk_Handle& InHandle);
-
-    // -----------------------
-    // SAMPLE REQUEST FUNCTION
-    // -----------------------
-    //UFUNCTION(BlueprintCallable,
-    //          Category = "Ck|Utils|EcsScriptTemplate",
-    //          DisplayName="Request X")
-    //static void
-    //Request_X(
-    //    UPARAM(ref) FCk_Handle& InHandle, ...);
 };
 
 // --------------------------------------------------------------------------------------------------------------------

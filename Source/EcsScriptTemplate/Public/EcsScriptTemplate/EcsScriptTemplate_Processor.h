@@ -26,20 +26,23 @@ CK_DEFINE_ECS_TAG(FTag_EcsScriptTemplate_Setup);
 // --------------------------------------------------------------------------------------------------------------------
 
 USTRUCT(BlueprintType)
-struct ECSSCRIPTTEMPLATE_API FFragment_EcsScriptTemplate_Request
+struct ECSSCRIPTTEMPLATE_API FFragment_EcsScriptTemplate_Requests
 {
     GENERATED_BODY()
 
 public:
-    CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Request);
+    CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Requests);
+
+public:
+    friend class UUtils_EcsScriptTemplate_UE;
 
 private:
     UPROPERTY(EditAnywhere, BlueprintReadWrite,
         meta=(AllowPrivateAccess))
-    FInstancedStruct _Request;
+    TArray<FInstancedStruct> _Requests;
 
 public:
-    CK_DEFINE_CONSTRUCTORS(FFragment_EcsScriptTemplate_Request, _Request);
+    CK_PROPERTY_GET(_Requests)
 };
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -148,7 +151,7 @@ protected:
         FCk_Handle InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current,
-        const TArray<FFragment_EcsScriptTemplate_Request>& InEcsScriptTemplate_Requests) const;
+        const FFragment_EcsScriptTemplate_Requests& InEcsScriptTemplate_Requests) const;
 
 public:
     auto
