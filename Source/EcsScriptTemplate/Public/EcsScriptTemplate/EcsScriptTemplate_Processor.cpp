@@ -35,7 +35,6 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -54,7 +53,6 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -66,7 +64,6 @@ auto
         }
     }
 
-    _CurrentHandle = {};
     _Registry->Clear<FTag_EcsScriptTemplate_Setup>();
 }
 
@@ -103,7 +100,6 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -122,7 +118,6 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -133,8 +128,6 @@ auto
             break;
         }
     }
-
-    _CurrentHandle = {};
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -171,7 +164,6 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -191,7 +183,6 @@ auto
                 CK_STAT(STAT_ForEachEntity);
 
                 const auto Handle = HandleType{InEntity, *_Registry};
-                _CurrentHandle = Handle;
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -203,7 +194,6 @@ auto
         }
     }
 
-    _CurrentHandle = {};
     _Registry->Clear<TArray<FFragment_EcsScriptTemplate_Requests>>();
 }
 
