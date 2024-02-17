@@ -95,7 +95,7 @@ protected:
         meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnDataChanged"))
     void
     Broadcast_OnDataChanged(
-        const FCk_Handle& InHandle,
+        FCk_Handle InHandle,
         const FInstancedStruct& InOptionalPayload) const;
 
     UFUNCTION(BlueprintImplementableEvent)
