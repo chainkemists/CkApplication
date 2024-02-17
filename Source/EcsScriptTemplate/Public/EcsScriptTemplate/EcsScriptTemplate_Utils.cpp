@@ -59,8 +59,8 @@ auto
         InAnyValidHandle, ck::Context(InDelegate.GetFunctionName()))
     { return; }
 
-    InAnyValidHandle->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current, CK_IGNORE_PENDING_KILL>().ForEach(
-    [&](FCk_Entity InEntity, FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
+    InAnyValidHandle.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current, CK_IGNORE_PENDING_KILL>()
+    .ForEach([&](FCk_Entity InEntity, FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
     {
         const auto Handle = ck::MakeHandle(InEntity, InAnyValidHandle);
 

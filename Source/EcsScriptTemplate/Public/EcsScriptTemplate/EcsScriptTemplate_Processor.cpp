@@ -28,13 +28,13 @@ auto
     {
         case ECk_Ecs_ForEach_Policy::OnlyValidEntities:
         {
-            _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
+            _TransientEntity.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
                 FTag_EcsScriptTemplate_Setup, CK_IGNORE_PENDING_KILL>().ForEach(
             [&](EntityType InEntity, FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = HandleType{InEntity, *_Registry};
+                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -46,13 +46,13 @@ auto
         }
         case ECk_Ecs_ForEach_Policy::AllEntities:
         {
-            _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
+            _TransientEntity.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
                 FTag_EcsScriptTemplate_Setup>().ForEach(
             [&](EntityType InEntity, FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = HandleType{InEntity, *_Registry};
+                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -64,7 +64,7 @@ auto
         }
     }
 
-    _Registry->Clear<FTag_EcsScriptTemplate_Setup>();
+    _TransientEntity.Clear<FTag_EcsScriptTemplate_Setup>();
 }
 
 // --------------------------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ auto
 auto
     UProcessor_EcsScriptTemplate_Update_UE::
     Broadcast_OnDataChanged(
-        const FCk_Handle& InHandle,
+        FCk_Handle InHandle,
         const FInstancedStruct& InOptionalPayload) const
     -> void
 {
@@ -93,13 +93,13 @@ auto
     {
         case ECk_Ecs_ForEach_Policy::OnlyValidEntities:
         {
-            _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
+            _TransientEntity.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
                 ck::TExclude<FTag_EcsScriptTemplate_Setup>, CK_IGNORE_PENDING_KILL>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = HandleType{InEntity, *_Registry};
+                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -111,13 +111,13 @@ auto
         }
         case ECk_Ecs_ForEach_Policy::AllEntities:
         {
-            _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
+            _TransientEntity.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
                 ck::TExclude<FTag_EcsScriptTemplate_Setup>>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = HandleType{InEntity, *_Registry};
+                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -156,14 +156,14 @@ auto
     {
         case ECk_Ecs_ForEach_Policy::OnlyValidEntities:
         {
-            _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
+            _TransientEntity.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
                 FFragment_EcsScriptTemplate_Requests, CK_IGNORE_PENDING_KILL>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent,
                 const FFragment_EcsScriptTemplate_Requests& InRequests)
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = HandleType{InEntity, *_Registry};
+                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -175,14 +175,14 @@ auto
         }
         case ECk_Ecs_ForEach_Policy::AllEntities:
         {
-            _Registry->View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
+            _TransientEntity.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
                 FFragment_EcsScriptTemplate_Requests>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent,
                 const FFragment_EcsScriptTemplate_Requests& InRequests)
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = HandleType{InEntity, *_Registry};
+                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
 
                 if (ProcessEntity_If(Handle))
                 {
@@ -194,7 +194,7 @@ auto
         }
     }
 
-    _Registry->Clear<TArray<FFragment_EcsScriptTemplate_Requests>>();
+    _TransientEntity.Clear<TArray<FFragment_EcsScriptTemplate_Requests>>();
 }
 
 // --------------------------------------------------------------------------------------------------------------------
