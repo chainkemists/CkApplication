@@ -28,18 +28,18 @@ GENERATED FILE - DO NOT MODIFY
 
 DECLARE_DYNAMIC_DELEGATE_TwoParams(
     FDelegate_EcsScriptTemplate_OnDataChanged,
-    FCk_Handle, InHandle,
+    FHandle_EcsScriptTemplate, InHandle,
     FInstancedStruct, InOptionalPayload);
 
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_TwoParams(
     FDelegate_EcsScriptTemplate_OnDataChanged_MC,
-    FCk_Handle, InHandle,
+    FHandle_EcsScriptTemplate, InHandle,
     FInstancedStruct, InOptionalPayload);
 
 // --------------------------------------------------------------------------------------------------------------------
 
 CK_DEFINE_SIGNAL_AND_UTILS_WITH_DELEGATE(ECSSCRIPTTEMPLATE_API, EcsScriptTemplate_OnUpdate,
-    FDelegate_EcsScriptTemplate_OnDataChanged_MC, FCk_Handle, FInstancedStruct);
+    FDelegate_EcsScriptTemplate_OnDataChanged_MC, FHandle_EcsScriptTemplate, FInstancedStruct);
 
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -50,81 +50,93 @@ class ECSSCRIPTTEMPLATE_API UUtils_EcsScriptTemplate_UE : public UCk_Utils_Ecs_B
 
 public:
     CK_GENERATED_BODY(UUtils_EcsScriptTemplate_UE);
+    CK_DEFINE_CPP_CASTCHECKED_TYPESAFE(FHandle_EcsScriptTemplate);
 
 public:
     friend class UUtilsExt_EcsScriptTemplate_UE;
 
 public:
     UFUNCTION(BlueprintCallable,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[Ck][EcsScriptTemplate] Add Feature")
-    static void
+              Category = "Utils|EcsScriptTemplate",
+              DisplayName="[EcsScriptTemplate] Add Feature")
+    static FHandle_EcsScriptTemplate
     Add(
         UPARAM(ref) FCk_Handle& InHandle,
         const FFragment_EcsScriptTemplate_Params& InParams);
 
+public:
     UFUNCTION(BlueprintPure,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[Ck][EcsScriptTemplate] Has Feature")
+              Category = "Utils|EcsScriptTemplate",
+              DisplayName="[EcsScriptTemplate] Has Feature")
     static bool
     Has(
         const FCk_Handle& InHandle);
 
+private:
+    UFUNCTION(BlueprintCallable,
+        Category = "Utils|EcsScriptTemplate",
+        DisplayName="[EcsScriptTemplate] Cast",
+        meta = (ExpandEnumAsExecs = "OutResult"))
+    static FHandle_EcsScriptTemplate
+    DoCast(
+        FCk_Handle InHandle,
+        ECk_SucceededFailed& OutResult);
+
     UFUNCTION(BlueprintPure,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[Ck][EcsScriptTemplate] Ensure Has Feature")
-    static bool
-    Ensure(
-        const FCk_Handle& InHandle);
+        Category = "Utils|EcsScriptTemplate",
+        DisplayName="[EcsScriptTemplate] Handle -> EcsScriptTemplate Handle",
+        meta = (CompactNodeTitle = "<AsEcsScriptTemplate>", BlueprintAutocast))
+    static FHandle_EcsScriptTemplate
+    DoCastChecked(
+        FCk_Handle InHandle);
 
 public:
     UFUNCTION(BlueprintCallable,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[Ck][EcsScriptTemplate] For Each",
-              meta=(AutoCreateRefTerm="InOptionalPayload"))
-    static void
+              Category = "Utils|EcsScriptTemplate",
+              DisplayName="[EcsScriptTemplate] For Each",
+              meta=(AutoCreateRefTerm="InOptionalPayload, InDelegate"))
+    static TArray<FHandle_EcsScriptTemplate>
     ForEach(
-        FCk_Handle InAnyValidHandle,
+        UPARAM(ref) FCk_Handle& InAnyValidHandle,
         const FInstancedStruct& InOptionalPayload,
         const FCk_Lambda_InHandle& InDelegate);
 
-
 public:
     UFUNCTION(BlueprintCallable,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName="[Ck][EcsScriptTemplate] Add Request")
+              Category = "Utils|EcsScriptTemplate",
+              DisplayName="[EcsScriptTemplate] Add Request")
     static void
     Request(
-        UPARAM(ref) FCk_Handle& InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         const FInstancedStruct& InRequest);
 
 public:
     UFUNCTION(BlueprintCallable,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName = "[Ck][EcsScriptTemplate] Bind To OnDataChanged")
+              Category = "Utils|EcsScriptTemplate",
+              DisplayName = "[EcsScriptTemplate] Bind To OnDataChanged")
     static void
     BindTo_OnDataChanged(
-        UPARAM(ref) FCk_Handle& InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         ECk_Signal_BindingPolicy InBehavior,
         ECk_Signal_PostFireBehavior InPostFireBehavior,
         const FDelegate_EcsScriptTemplate_OnDataChanged& InDelegate);
 
     UFUNCTION(BlueprintCallable,
-              Category = "Ck|Utils|EcsScriptTemplate",
-              DisplayName = "[Ck][EcsScriptTemplate] Unbind From OnDataChanged")
+              Category = "Utils|EcsScriptTemplate",
+              DisplayName = "[EcsScriptTemplate] Unbind From OnDataChanged")
     static void
     UnbindFrom_OnDataChanged(
-        UPARAM(ref) FCk_Handle& InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         const FDelegate_EcsScriptTemplate_OnDataChanged& InDelegate);
 
 private:
     static auto
     Get_Params(
-        const FCk_Handle& InHandle) -> const FFragment_EcsScriptTemplate_Params&;
+        const FHandle_EcsScriptTemplate& InHandle) -> const FFragment_EcsScriptTemplate_Params&;
 
     static auto
     Get_Current(
-        const FCk_Handle& InHandle) -> const FFragment_EcsScriptTemplate_Current&;
+        const FHandle_EcsScriptTemplate& InHandle) -> const FFragment_EcsScriptTemplate_Current&;
 };
 
 // --------------------------------------------------------------------------------------------------------------------

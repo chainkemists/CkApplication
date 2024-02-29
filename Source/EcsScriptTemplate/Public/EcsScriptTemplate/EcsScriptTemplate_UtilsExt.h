@@ -31,11 +31,11 @@ public:
     // SAMPLE GETTER
     // -----------------------
     //UFUNCTION(BlueprintPure,
-    //    Category = "Ck|Utils|EcsScriptTemplate",
-    //    DisplayName="[Ck][EcsScriptTemplate] Getter Display Name")
+    //    Category = "Utils|EcsScriptTemplate",
+    //    DisplayName="[EcsScriptTemplate] Get X")
     //static const X&
     //Get_X(
-    //    const FCk_Handle& InHandle);
+    //    const FHandle_EcsScriptTemplate& InHandle);
 };
 
 // --------------------------------------------------------------------------------------------------------------------
