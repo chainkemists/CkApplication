@@ -152,3 +152,32 @@ public:
 };
 
 // --------------------------------------------------------------------------------------------------------------------
+
+UCLASS(Abstract, Blueprintable)
+class ECSSCRIPTTEMPLATE_API UProcessor_EcsScriptTemplate_Teardown_UE : public UCk_Ecs_ProcessorScript_Base_UE
+{
+    GENERATED_BODY()
+
+public:
+    CK_GENERATED_BODY(UProcessor_EcsScriptTemplate_Teardown_UE);
+
+public:
+    CK_DEFINE_STAT(STAT_ForEachEntity, UProcessor_EcsScriptTemplate_Teardown_UE, FStatGroup_STATGROUP_CkProcessors_Details);
+    CK_DEFINE_STAT(STAT_Tick, UProcessor_EcsScriptTemplate_Teardown_UE, FStatGroup_STATGROUP_CkProcessors);
+
+protected:
+    UFUNCTION(BlueprintImplementableEvent)
+    void
+    ForEachEntity(
+        FCk_Time InTime,
+        FCk_Handle InHandle,
+        const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
+        UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const;
+
+public:
+    auto
+    Tick(
+        TimeType InTime) -> void override;
+};
+
+// --------------------------------------------------------------------------------------------------------------------

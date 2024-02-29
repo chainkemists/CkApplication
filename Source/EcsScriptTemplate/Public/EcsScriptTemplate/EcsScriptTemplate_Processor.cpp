@@ -198,3 +198,39 @@ auto
 }
 
 // --------------------------------------------------------------------------------------------------------------------
+
+auto
+    UProcessor_EcsScriptTemplate_Teardown_UE::
+    Tick(
+        TimeType InTime)
+    -> void
+{
+    CK_STAT(STAT_Tick);
+
+    Super::Tick(InTime);
+
+    switch(Get_ForEachPolicy())
+    {
+        case ECk_Ecs_ForEach_Policy::OnlyValidEntities:
+        case ECk_Ecs_ForEach_Policy::AllEntities:
+        {
+            _TransientEntity.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
+                ck::TExclude<FTag_EcsScriptTemplate_Setup>, CK_IF_INITIATE_KILL>().ForEach(
+            [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
+            {
+                CK_STAT(STAT_ForEachEntity);
+
+                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+
+                if (ProcessEntity_If(Handle))
+                {
+                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                }
+            });
+
+            break;
+        }
+    }
+}
+
+// --------------------------------------------------------------------------------------------------------------------
