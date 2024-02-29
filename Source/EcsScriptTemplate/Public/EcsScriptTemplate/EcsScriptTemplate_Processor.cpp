@@ -34,11 +34,11 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
-
-                if (ProcessEntity_If(Handle))
+                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                    ProcessEntity_If(Handle))
                 {
-                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                    auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
+                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent);
                 }
             });
 
@@ -52,11 +52,11 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
-
-                if (ProcessEntity_If(Handle))
+                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                    ProcessEntity_If(Handle))
                 {
-                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                    auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
+                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent);
                 }
             });
 
@@ -72,7 +72,7 @@ auto
 auto
     UProcessor_EcsScriptTemplate_Update_UE::
     Broadcast_OnDataChanged(
-        FCk_Handle InHandle,
+        FHandle_EcsScriptTemplate& InHandle,
         const FInstancedStruct& InOptionalPayload) const
     -> void
 {
@@ -99,11 +99,11 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
-
-                if (ProcessEntity_If(Handle))
+                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                    ProcessEntity_If(Handle))
                 {
-                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                    auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
+                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent);
                 }
             });
 
@@ -117,11 +117,11 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
-
-                if (ProcessEntity_If(Handle))
+                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                    ProcessEntity_If(Handle))
                 {
-                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                    auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
+                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent);
                 }
             });
 
@@ -135,7 +135,7 @@ auto
 auto
     UProcessor_EcsScriptTemplate_HandleRequests_UE::
     Broadcast_OnDataChanged(
-        const FCk_Handle& InHandle,
+        FHandle_EcsScriptTemplate& InHandle,
         const FInstancedStruct& InOptionalPayload) const
         -> void
 {
@@ -163,11 +163,11 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
-
-                if (ProcessEntity_If(Handle))
+                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                    ProcessEntity_If(Handle))
                 {
-                    ForEachEntity(InTime, Handle, InParams, InCurrent, InRequests);
+                    auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
+                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent, InRequests);
                 }
             });
 
@@ -182,11 +182,11 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
-
-                if (ProcessEntity_If(Handle))
+                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                    ProcessEntity_If(Handle))
                 {
-                    ForEachEntity(InTime, Handle, InParams, InCurrent, InRequests);
+                    auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
+                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent, InRequests);
                 }
             });
 
@@ -220,11 +220,11 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
-
-                if (ProcessEntity_If(Handle))
+                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                    ProcessEntity_If(Handle))
                 {
-                    ForEachEntity(InTime, Handle, InParams, InCurrent);
+                    auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
+                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent);
                 }
             });
 

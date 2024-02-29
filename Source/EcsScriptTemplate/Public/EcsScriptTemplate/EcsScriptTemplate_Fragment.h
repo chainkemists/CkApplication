@@ -5,8 +5,15 @@
 #include "CkCore/Macros/CkMacros.h"
 
 #include "CkEcs/Tag/CkTag.h"
+#include "CkEcs/Handle/CkHandle_TypeSafe.h"
 
 #include "EcsScriptTemplate_Fragment.generated.h"
+
+// --------------------------------------------------------------------------------------------------------------------
+
+USTRUCT(BlueprintType, meta=(HasNativeMake, HasNativeBreak))
+struct ECSSCRIPTTEMPLATE_API FHandle_EcsScriptTemplate : public FCk_Handle_TypeSafe { GENERATED_BODY() CK_GENERATED_BODY_HANDLE_TYPESAFE(FHandle_EcsScriptTemplate); };
+CK_DEFINE_CUSTOM_ISVALID_AND_FORMATTER_HANDLE_TYPESAFE(FHandle_EcsScriptTemplate);
 
 // --------------------------------------------------------------------------------------------------------------------
 
@@ -19,6 +26,7 @@ public:
     CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Params);
 
 private:
+    // remove/replace once you have own data
     UPROPERTY(EditAnywhere, BlueprintReadWrite,
         meta=(AllowPrivateAccess))
     int32 _DummyVariable = 0;
@@ -35,7 +43,7 @@ public:
     CK_GENERATED_BODY(FFragment_EcsScriptTemplate_Current);
 
 private:
-    // remove once you have own data
+    // remove/replace once you have own data
     UPROPERTY(EditAnywhere, BlueprintReadWrite,
         meta=(AllowPrivateAccess))
     int32 _DummyVariable = 0;

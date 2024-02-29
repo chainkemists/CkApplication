@@ -64,7 +64,7 @@ protected:
     void
     ForEachEntity(
         FCk_Time InTime,
-        FCk_Handle InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         UPARAM(ref) FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const;
 
@@ -92,17 +92,17 @@ protected:
     UFUNCTION(BlueprintCallable,
         BlueprintPure = false,
         DisplayName = "[EcsScriptTemplate] Broadcast OnDataChanged",
-        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnDataChanged"))
+        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnDataChanged", AutoCreateRefTerm = "InOptionalPayload"))
     void
     Broadcast_OnDataChanged(
-        FCk_Handle InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         const FInstancedStruct& InOptionalPayload) const;
 
     UFUNCTION(BlueprintImplementableEvent)
     void
     ForEachEntity(
         FCk_Time InTime,
-        FCk_Handle InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const;
 
@@ -130,17 +130,17 @@ protected:
     UFUNCTION(BlueprintCallable,
         BlueprintPure = false,
         DisplayName = "[EcsScriptTemplate] Broadcast OnDataChanged",
-        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnDataChanged"))
+        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnDataChanged", AutoCreateRefTerm = "InOptionalPayload"))
     void
     Broadcast_OnDataChanged(
-        const FCk_Handle& InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         const FInstancedStruct& InOptionalPayload) const;
 
     UFUNCTION(BlueprintImplementableEvent)
     void
     ForEachEntity(
         FCk_Time InTime,
-        FCk_Handle InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current,
         const FFragment_EcsScriptTemplate_Requests& InEcsScriptTemplate_Requests) const;
@@ -170,7 +170,7 @@ protected:
     void
     ForEachEntity(
         FCk_Time InTime,
-        FCk_Handle InHandle,
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
         const FFragment_EcsScriptTemplate_Params& InEcsScriptTemplate_Params,
         UPARAM(ref) FFragment_EcsScriptTemplate_Current& InEcsScriptTemplate_Current) const;
 
