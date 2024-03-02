@@ -194,7 +194,7 @@ auto
         }
     }
 
-    _TransientEntity.Clear<TArray<FFragment_EcsScriptTemplate_Requests>>();
+    _TransientEntity.Clear<FFragment_EcsScriptTemplate_Requests>();
 }
 
 // --------------------------------------------------------------------------------------------------------------------
