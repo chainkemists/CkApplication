@@ -60,6 +60,15 @@ public:
     CK_DEFINE_STAT(STAT_Tick, UProcessor_EcsScriptTemplate_Setup_UE, FStatGroup_STATGROUP_CkProcessors);
 
 protected:
+    UFUNCTION(BlueprintCallable,
+        BlueprintPure = false,
+        DisplayName = "[EcsScriptTemplate] Broadcast OnDataChanged",
+        meta=(HideSelfPin = true, CompactNodeTitle="Broadcast OnDataChanged", AutoCreateRefTerm = "InOptionalPayload"))
+    void
+    Broadcast_OnDataChanged(
+        UPARAM(ref) FHandle_EcsScriptTemplate& InHandle,
+        const FInstancedStruct& InOptionalPayload) const;
+
     UFUNCTION(BlueprintImplementableEvent)
     void
     ForEachEntity(
