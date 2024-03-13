@@ -16,6 +16,16 @@ GENERATED FILE - DO NOT MODIFY
 
 auto
     UProcessor_EcsScriptTemplate_Setup_UE::
+    Broadcast_OnDataChanged(
+        FHandle_EcsScriptTemplate& InHandle,
+        const FInstancedStruct& InOptionalPayload) const
+    -> void
+{
+    UUtils_Signal_EcsScriptTemplate_OnUpdate::Broadcast(InHandle, ck::MakePayload(InHandle, InOptionalPayload));
+}
+
+auto
+    UProcessor_EcsScriptTemplate_Setup_UE::
     Tick(
         TimeType InTime)
     -> void
