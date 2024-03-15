@@ -1,5 +1,8 @@
 #include "EcsScriptTemplate_Processor.h"
 
+#include "EcsScriptTemplate/EcsScriptTemplate_Processor.h"
+#include "EcsScriptTemplate/EcsScriptTemplate_Processor.h"
+
 #include "CkEcs/Processor/CkProcessorScript_Subsystem.h"
 
 #include "EcsScriptTemplate/EcsScriptTemplate_Fragment.h"
@@ -79,6 +82,14 @@ auto
 
 // --------------------------------------------------------------------------------------------------------------------
 
+UProcessor_EcsScriptTemplate_Update_UE::
+    UProcessor_EcsScriptTemplate_Update_UE(
+        const FObjectInitializer& InObjectInitializer)
+    : Super(InObjectInitializer)
+    , _VariableTickProcessor(MakeUnique<VariableTickProcessor>(this))
+{
+}
+
 auto
     UProcessor_EcsScriptTemplate_Update_UE::
     Broadcast_OnDataChanged(
@@ -99,6 +110,16 @@ auto
 
     Super::Tick(InTime);
 
+    _VariableTickProcessor->Set_TickRate(_TickRate);
+    _VariableTickProcessor->Tick(InTime);
+}
+
+auto
+    UProcessor_EcsScriptTemplate_Update_UE::
+    DoTick(
+        TimeType InTime)
+    -> void
+{
     switch(Get_ForEachPolicy())
     {
         case ECk_Ecs_ForEach_Policy::OnlyValidEntities:
@@ -138,6 +159,21 @@ auto
             break;
         }
     }
+}
+
+UProcessor_EcsScriptTemplate_Update_UE::VariableTickProcessor::
+    VariableTickProcessor(
+        UProcessor_EcsScriptTemplate_Update_UE* InScriptProcessor)
+    : Super(FCk_Registry{})
+    , _ScriptProcessor(InScriptProcessor)
+{ }
+
+auto
+    UProcessor_EcsScriptTemplate_Update_UE::VariableTickProcessor::
+    DoTick(
+        TimeType InDeltaT)
+{
+    _ScriptProcessor->DoTick(InDeltaT);
 }
 
 // --------------------------------------------------------------------------------------------------------------------

@@ -97,6 +97,10 @@ public:
     CK_DEFINE_STAT(STAT_ForEachEntity, UProcessor_EcsScriptTemplate_Update_UE, FStatGroup_STATGROUP_CkProcessors_Details);
     CK_DEFINE_STAT(STAT_Tick, UProcessor_EcsScriptTemplate_Update_UE, FStatGroup_STATGROUP_CkProcessors);
 
+public:
+    UProcessor_EcsScriptTemplate_Update_UE(
+        const FObjectInitializer& InObjectInitializer);
+
 protected:
     UFUNCTION(BlueprintCallable,
         BlueprintPure = false,
@@ -119,6 +123,37 @@ public:
     auto
     Tick(
         TimeType InTime) -> void override;
+
+public:
+    auto
+    DoTick(
+        TimeType InTime) -> void;
+
+private:
+    UPROPERTY(EditAnywhere, BlueprintReadWrite, meta=(AllowPrivateAccess))
+    FCk_Time _TickRate;
+
+private:
+    struct VariableTickProcessor : public ck::TProcessorBase<VariableTickProcessor>
+    {
+    public:
+        using Super = ck::TProcessorBase<VariableTickProcessor>;
+        using TimeType = FCk_Time;
+
+    public:
+        VariableTickProcessor(
+            UProcessor_EcsScriptTemplate_Update_UE* InScriptProcessor);
+
+    public:
+        auto
+        DoTick(TimeType InDeltaT);
+
+    private:
+        // the pointer is guaranteed to be valid, no need for a TWeakObjectPtr
+        UProcessor_EcsScriptTemplate_Update_UE* _ScriptProcessor;
+    };
+
+    TUniquePtr<VariableTickProcessor> _VariableTickProcessor;
 };
 
 // --------------------------------------------------------------------------------------------------------------------
