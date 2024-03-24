@@ -16,6 +16,8 @@ public class EcsScriptTemplate : CkModuleRules
             "Engine",
             "StructUtils",
             "GameplayTags",
+            "UnrealEd",
+            "BlueprintGraph",
 
             "CkCore",
             "CkEcs",

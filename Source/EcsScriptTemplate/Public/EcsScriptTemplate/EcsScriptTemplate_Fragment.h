@@ -4,8 +4,11 @@
 
 #include "CkCore/Macros/CkMacros.h"
 
+#include "CkEcs/EntityConstructionScript/CkEntity_ConstructionScript.h"
 #include "CkEcs/Tag/CkTag.h"
 #include "CkEcs/Handle/CkHandle_TypeSafe.h"
+
+#include "UObject/ObjectSaveContext.h"
 
 #include "EcsScriptTemplate_Fragment.generated.h"
 
@@ -50,3 +53,29 @@ private:
 };
 
 // --------------------------------------------------------------------------------------------------------------------
+
+UCLASS(BlueprintType)
+class ECSSCRIPTTEMPLATE_API UCk_DataViewer_PDA : public UPrimaryDataAsset
+{
+    GENERATED_BODY()
+
+public:
+    CK_GENERATED_BODY(UCk_DataViewer_PDA);
+
+    auto PostCDOCompiled() -> void override;
+
+    void PostEditChangeProperty(
+        FPropertyChangedEvent& PropertyChangedEvent) override;
+
+    UFUNCTION(CallInEditor)
+    void DoIt();
+
+private:
+    UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess=true))
+    TSubclassOf<UCk_Entity_ConstructionScript_PDA> _ConstructionScript;
+
+    UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess=true))
+    TSoftObjectPtr<UCk_Entity_ConstructionScript_PDA> _Test;
+
+    TMap<FName, TWeakObjectPtr<FStructProperty>> _PropertiesInOther;
+};
