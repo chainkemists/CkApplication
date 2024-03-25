@@ -176,76 +176,53 @@ void
     if (NOT ck::IsValid(ThisBlueprint))
     { return; }
 
-    auto Blueprint = Cast<UBlueprint>(UCk_Utils_Object_UE::Get_ClassGeneratedByBlueprint(_ConstructionScript.Get()));
+    auto GenClassObject = UCk_Utils_Object_UE::Get_ClassGeneratedByBlueprint(_ConstructionScript.Get());
+    auto Blueprint = Cast<UBlueprint>(GenClassObject);
 
     if (NOT Blueprint)
     { return; }
 
-    if (InPropertyChangedEvent.Property->GetFName() == TEXT("New Var"))
+    auto BlueprintGenClass = Blueprint->GeneratedClass;
+
+    uint8* ThatContainer = (uint8*)Blueprint;
+
+    const UObject* ThisDO = this;
+    const uint8* ThisContainer = (const uint8*)ThisDO;
+
+    FString Value;
+    FBlueprintEditorUtils::PropertyValueToString(InPropertyChangedEvent.Property, ThisContainer, Value);
+
+    if (BlueprintGenClass)
     {
-        //auto Found = _ConstructionScript.Get()->FindPropertyByName(TEXT("NewVar"));
-        //if (Found)
-        //{
-            //PropertyAccessUtil::FindPropertyByName(TEXT("New Var"), Blueprint);
-            //PropertyAccessUtil::SetPropertyValue_Object(*Found, Blueprint, InPropertyChangedEvent.Property,
+        auto Found = BlueprintGenClass->FindPropertyByName(InPropertyChangedEvent.Property->GetFName());
+        if (ck::IsValid(Found, ck::IsValid_Policy_NullptrOnly{}))
         {
-
-            auto Found = Blueprint->NewVariables.FindByPredicate([&](const FBPVariableDescription& InVarDesc)
-            {
-                if (InVarDesc.VarName == TEXT("NewVar"))
-                { return true; }
-
-                return false;
-            });
-
-            if (Found)
-            {
-                const UObject* ThisDO = this;
-                const uint8* ThisContainer = (const uint8*)ThisDO;
-
-                uint8* ThatContainer = (uint8*)Blueprint;
-
-                FString Value;
-                FBlueprintEditorUtils::PropertyValueToString(InPropertyChangedEvent.Property, ThisContainer, Value);
-                    Found->DefaultValue = Value;
-
-                FKismetEditorUtilities::CompileBlueprint(Blueprint);
-                std::ignore = Blueprint->MarkPackageDirty();
-                return;
-            }
+            FBlueprintEditorUtils::PropertyValueFromString(Found, Value, reinterpret_cast<uint8*>(BlueprintGenClass->ClassDefaultObject));
         }
+    }
 
-        //    FBlueprintEditorUtils::PropertyValueFromString(Found, Value, ThatContainer);
-        //}
+    return;
 
-        return;
+    for (auto Itr = TFieldIterator<FProperty>{_ConstructionScript.Get()}; Itr; ++Itr)
+    {
+        FField* Field = *Itr;
+        FStructProperty* Property = static_cast<FStructProperty*>(Field);
 
-        for (auto Itr = TFieldIterator<FProperty>{_ConstructionScript.Get()}; Itr; ++Itr)
+        if (Property->NamePrivate == InPropertyChangedEvent.Property->GetFName())
         {
-            FField* Field = *Itr;
-            FStructProperty* Property = static_cast<FStructProperty*>(Field);
+            FString OtherValue;
+            FBlueprintEditorUtils::PropertyValueToString(Property, ThatContainer, OtherValue);
 
-            Property->SetMetaData(TEXT("ExposeToCinematics"), TEXT("True"));
-
-            if (Property->GetDisplayNameText().ToString() == TEXT("New Var"))
-            {
-                //InPropertyChangedEvent.Property->CopySingleValue(Property, InPropertyChangedEvent.Property);
-                FString Value;
-
-                const UObject* ThisDO = this;
-                const uint8* ThisContainer = (const uint8*)ThisDO;
-
-                UObject* ThatDO = Blueprint;
-                uint8* ThatContainer = (uint8*)_ConstructionScript.Get();
-
-                UObject* ThatDOCDO = Blueprint;
-                uint8* ThatContainerCDO = (uint8*)ThatDOCDO;
-
-                FBlueprintEditorUtils::PropertyValueToString(InPropertyChangedEvent.Property, ThisContainer, Value);
-                FBlueprintEditorUtils::PropertyValueFromString(Property, Value, ThatContainer);
-                FBlueprintEditorUtils::PropertyValueFromString(Property, Value, ThatContainerCDO);
-            }
+            FBlueprintEditorUtils::PropertyValueFromString(Property, Value, ThatContainer);
         }
+    }
+
+    if (const auto Found = UCk_Utils_Object_UE::Find_BlueprintVariable(Blueprint, InPropertyChangedEvent.Property->GetFName()))
+    {
+        //Found->DefaultValue = Value;
+
+        FKismetEditorUtilities::CompileBlueprint(Blueprint);
+        std::ignore = Blueprint->MarkPackageDirty();
     }
 }
 
@@ -358,7 +335,7 @@ void
             continue;
         }
 
-        FBlueprintEditorUtils::AddMemberVariable(Blueprint, *Itr->GetDisplayNameText().ToString(), PinType);
+        FBlueprintEditorUtils::AddMemberVariable(Blueprint, Itr->NamePrivate, PinType);
 
         auto Found = Blueprint->NewVariables.FindByPredicate([&](const FBPVariableDescription& InVarDesc)
         {
