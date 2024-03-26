@@ -62,13 +62,19 @@ class ECSSCRIPTTEMPLATE_API UCk_DataViewer_PDA : public UPrimaryDataAsset
 public:
     CK_GENERATED_BODY(UCk_DataViewer_PDA);
 
+
+
+    auto
+    PostLoad()
+        -> void override;
+
     auto PostCDOCompiled() -> void override;
 
     void PostEditChangeProperty(
         FPropertyChangedEvent& PropertyChangedEvent) override;
 
     UFUNCTION(CallInEditor)
-    void DoIt();
+    void Reload();
 
 private:
     UPROPERTY(EditDefaultsOnly, meta=(AllowPrivateAccess=true))

@@ -16,6 +16,23 @@ CK_INTENTIONALLY_EMPTY()
 
 auto
     UCk_DataViewer_PDA::
+    PostLoad()
+    -> void
+{
+    Super::PostLoad();
+
+    if (this->HasAnyFlags(RF_ArchetypeObject))
+    { return; }
+
+    const auto& TimerManager = GEditor->GetTimerManager();
+    TimerManager->SetTimerForNextTick([this]()
+    {
+        Reload();
+    });
+}
+
+auto
+    UCk_DataViewer_PDA::
     PostCDOCompiled()
     -> void
 {
@@ -171,6 +188,9 @@ void
 {
     Super::PostEditChangeProperty(InPropertyChangedEvent);
 
+    if (this->HasAnyFlags(RF_ArchetypeObject))
+    { return; }
+
     auto ThisBlueprint = Cast<UBlueprint>(UCk_Utils_Object_UE::Get_ClassGeneratedByBlueprint(GetClass()));
 
     if (NOT ck::IsValid(ThisBlueprint))
@@ -201,34 +221,21 @@ void
         }
     }
 
-    return;
+    FKismetEditorUtilities::CompileBlueprint(Blueprint);
+    std::ignore = Blueprint->MarkPackageDirty();
 
-    for (auto Itr = TFieldIterator<FProperty>{_ConstructionScript.Get()}; Itr; ++Itr)
     {
-        FField* Field = *Itr;
-        FStructProperty* Property = static_cast<FStructProperty*>(Field);
-
-        if (Property->NamePrivate == InPropertyChangedEvent.Property->GetFName())
-        {
-            FString OtherValue;
-            FBlueprintEditorUtils::PropertyValueToString(Property, ThatContainer, OtherValue);
-
-            FBlueprintEditorUtils::PropertyValueFromString(Property, Value, ThatContainer);
-        }
-    }
-
-    if (const auto Found = UCk_Utils_Object_UE::Find_BlueprintVariable(Blueprint, InPropertyChangedEvent.Property->GetFName()))
-    {
-        //Found->DefaultValue = Value;
-
-        FKismetEditorUtilities::CompileBlueprint(Blueprint);
-        std::ignore = Blueprint->MarkPackageDirty();
+        UPackage* Package = GetOutermost();
+        Package->SetDirtyFlag(false);
     }
 }
 
 void
-    UCk_DataViewer_PDA::DoIt()
+    UCk_DataViewer_PDA::Reload()
 {
+    if (this->HasAnyFlags(RF_ArchetypeObject))
+    { return; }
+
     if (ck::Is_NOT_Valid(_ConstructionScript))
     { return; }
 
@@ -335,7 +342,18 @@ void
             continue;
         }
 
-        FBlueprintEditorUtils::AddMemberVariable(Blueprint, Itr->NamePrivate, PinType);
+        auto GenClassObject = UCk_Utils_Object_UE::Get_ClassGeneratedByBlueprint(_ConstructionScript.Get());
+        auto ThatBlueprint = Cast<UBlueprint>(GenClassObject);
+
+        if (NOT ThatBlueprint)
+        { return; }
+
+        auto ThatBlueprintGenClass = ThatBlueprint->GeneratedClass;
+
+        FString Value;
+        FBlueprintEditorUtils::PropertyValueToString(Property, reinterpret_cast<uint8*>(ThatBlueprintGenClass->ClassDefaultObject), Value);
+
+        FBlueprintEditorUtils::AddMemberVariable(Blueprint, Itr->NamePrivate, PinType, Value);
 
         auto Found = Blueprint->NewVariables.FindByPredicate([&](const FBPVariableDescription& InVarDesc)
         {
@@ -348,8 +366,19 @@ void
         if (Found)
         {
             Found->RemoveMetaData("BlueprintPrivate");
+            Found->SetMetaData("Transient", TEXT("True"));
         }
     }
 
     FKismetEditorUtilities::CompileBlueprint(Blueprint);
+
+    {
+        UPackage* Package = Blueprint->GetOutermost();
+        Package->SetDirtyFlag(false);
+    }
+
+    {
+        UPackage* Package = GetOutermost();
+        Package->SetDirtyFlag(false);
+    }
 }
