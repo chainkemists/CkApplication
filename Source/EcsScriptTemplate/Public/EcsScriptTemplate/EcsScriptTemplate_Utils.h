@@ -79,7 +79,7 @@ private:
         meta = (ExpandEnumAsExecs = "OutResult"))
     static FHandle_EcsScriptTemplate
     DoCast(
-        FCk_Handle InHandle,
+        UPARAM(ref) FCk_Handle& InHandle,
         ECk_SucceededFailed& OutResult);
 
     UFUNCTION(BlueprintPure,
