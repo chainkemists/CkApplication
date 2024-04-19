@@ -261,7 +261,7 @@ auto
         case ECk_Ecs_ForEach_Policy::AllEntities:
         {
             _TransientEntity.View<FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current,
-                ck::TExclude<FTag_EcsScriptTemplate_Setup>, CK_IF_INITIATE_KILL>().ForEach(
+                ck::TExclude<FTag_EcsScriptTemplate_Setup>, CK_IF_INITIATE_CONFIRM_KILL>().ForEach(
             [&](EntityType InEntity, const FFragment_EcsScriptTemplate_Params& InParams, FFragment_EcsScriptTemplate_Current& InCurrent)
             {
                 CK_STAT(STAT_ForEachEntity);
