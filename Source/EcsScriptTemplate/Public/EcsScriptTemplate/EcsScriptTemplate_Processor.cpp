@@ -209,11 +209,14 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                if (auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
                     ProcessEntity_If(Handle))
                 {
                     auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
-                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent, InRequests);
+                    Handle.CopyAndRemove(InRequests, [&](const FFragment_EcsScriptTemplate_Requests& InRequestsCopy) -> void
+                    {
+                        ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent, InRequestsCopy);
+                    });
                 }
             });
 
@@ -228,19 +231,20 @@ auto
             {
                 CK_STAT(STAT_ForEachEntity);
 
-                if (const auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
+                if (auto Handle = ck::MakeHandle(InEntity, _TransientEntity);
                     ProcessEntity_If(Handle))
                 {
                     auto TypeSafeHandle = UUtils_EcsScriptTemplate_UE::CastChecked(Handle);
-                    ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent, InRequests);
+                    Handle.CopyAndRemove(InRequests, [&](const FFragment_EcsScriptTemplate_Requests& InRequestsCopy) -> void
+                    {
+                        ForEachEntity(InTime, TypeSafeHandle, InParams, InCurrent, InRequestsCopy);
+                    });
                 }
             });
 
             break;
         }
     }
-
-    _TransientEntity.Clear<FFragment_EcsScriptTemplate_Requests>();
 }
 
 // --------------------------------------------------------------------------------------------------------------------
