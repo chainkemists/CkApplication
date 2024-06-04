@@ -19,7 +19,7 @@ public class EcsScriptTemplate : CkModuleRules
 
             "CkCore",
             "CkEcs",
-            "CkEcsBasics",
+            "CkEcsExt",
             "CkLabel",
             "CkLog",
             "CkRecord",

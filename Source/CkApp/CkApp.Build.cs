@@ -26,7 +26,7 @@ public class CkApp : CkModuleRules
             "CkConsoleCommands",
             "CkCore",
             "CkEcs",
-            "CkEcsBasics",
+            "CkEcsExt",
             "CkEntityBridge",
             "CkGameSession",
             "CkGraphics",
