@@ -4,7 +4,7 @@
 
 #include "CkEcs/Delegates/CkDelegates.h"
 
-#include "CkEcsBasics/CkEcsBasics_Utils.h"
+#include "CkEcsExt/CkEcsExt_Utils.h"
 
 #include "EcsScriptTemplate/EcsScriptTemplate_Fragment.h"
 

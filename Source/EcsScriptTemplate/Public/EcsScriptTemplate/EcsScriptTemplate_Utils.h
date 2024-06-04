@@ -6,7 +6,7 @@
 
 #include "CkEcs/Delegates/CkDelegates.h"
 
-#include "CkEcsBasics/CkEcsBasics_Utils.h"
+#include "CkEcsExt/CkEcsExt_Utils.h"
 
 #include "CkSignal/CkSignal_Macros.h"
 
