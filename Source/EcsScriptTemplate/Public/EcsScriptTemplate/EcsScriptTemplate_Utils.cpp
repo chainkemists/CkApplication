@@ -29,7 +29,7 @@ auto
 
 // --------------------------------------------------------------------------------------------------------------------
 
-CK_DEFINE_HAS_CAST_CONV_HANDLE_TYPESAFE(EcsScriptTemplate, UUtils_EcsScriptTemplate_UE, FHandle_EcsScriptTemplate, FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current);
+CK_DEFINE_HAS_CAST_CONV_HANDLE_TYPESAFE(UUtils_EcsScriptTemplate_UE, FHandle_EcsScriptTemplate, FFragment_EcsScriptTemplate_Params, FFragment_EcsScriptTemplate_Current);
 
 // --------------------------------------------------------------------------------------------------------------------
 
