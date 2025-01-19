@@ -1,4 +1,4 @@
-#include "CkApp.h"
+#include "CkApp_Module.h"
 
 #define LOCTEXT_NAMESPACE "FCkAppModule"
 
