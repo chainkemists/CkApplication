@@ -90,6 +90,13 @@ private:
     DoCastChecked(
         FCk_Handle InHandle);
 
+    UFUNCTION(BlueprintPure,
+        DisplayName = "[Ck] Get Invalid EcsScriptTemplate Handle",
+        Category = "Ck|Utils|EcsScriptTemplate",
+        meta = (CompactNodeTitle = "INVALID_EcsScriptTemplateHandle", Keywords = "make"))
+    static FHandle_EcsScriptTemplate
+    Get_InvalidHandle() { return {}; };
+
 public:
     UFUNCTION(BlueprintCallable,
               Category = "Utils|EcsScriptTemplate",
