@@ -35,7 +35,6 @@ public class CkApp : CkModuleRules
             "CkLabel",
             "CkLog",
             "CkMemory",
-            "CkNet",
             "CkOverlapBody",
             "CkPerception",
             "CkPhysics",
