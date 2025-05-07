@@ -31,7 +31,6 @@ public class CkApp : CkModuleRules
             "CkGameSession",
             "CkGraphics",
             "CkInput",
-            "CkIntent",
             "CkLabel",
             "CkLog",
             "CkMemory",
