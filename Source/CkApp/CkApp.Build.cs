@@ -43,7 +43,6 @@ public class CkApp : CkModuleRules
             "CkRecord",
             "CkResourceLoader",
             "CkSettings",
-            "CkSignal",
             "CkTimer",
             "CkUI",
             "CkVariables",
