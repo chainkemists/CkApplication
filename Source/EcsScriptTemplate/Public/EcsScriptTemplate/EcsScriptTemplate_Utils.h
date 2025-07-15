@@ -8,7 +8,7 @@
 
 #include "CkEcsExt/CkEcsExt_Utils.h"
 
-#include "CkSignal/CkSignal_Macros.h"
+#include "CkEcs/Signal/CkSignal_Macros.h"
 
 #include "EcsScriptTemplate/EcsScriptTemplate_Fragment.h"
 
