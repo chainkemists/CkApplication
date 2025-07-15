@@ -14,7 +14,6 @@ public class EcsScriptTemplate : CkModuleRules
             "Core",
             "CoreUObject",
             "Engine",
-            "StructUtils",
             "GameplayTags",
 
             "CkCore",
