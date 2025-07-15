@@ -23,7 +23,6 @@ public class EcsScriptTemplate : CkModuleRules
             "CkLog",
             "CkRecord",
             "CkSettings",
-            "CkSignal",
         });
     }
 }
