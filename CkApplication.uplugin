@@ -31,10 +31,6 @@
 		{
 			"Name": "CkFoundation",
 			"Enabled": true
-		},
-		{
-			"Name": "CkDebugger",
-			"Enabled": true
 		}
 	]
 }
