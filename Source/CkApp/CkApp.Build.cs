@@ -15,7 +15,6 @@ public class CkApp : CkModuleRules
             "CoreUObject",
             "Engine",
 
-            "CkAbility",
             "CkActor",
             "CkActorProxy",
             "CkAnimation",
@@ -27,7 +26,6 @@ public class CkApp : CkModuleRules
             "CkCore",
             "CkEcs",
             "CkEcsExt",
-            "CkEntityBridge",
             "CkGameSession",
             "CkGraphics",
             "CkInput",
