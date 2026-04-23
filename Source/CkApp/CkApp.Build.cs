@@ -16,7 +16,6 @@ public class CkApp : CkModuleRules
             "Engine",
 
             "CkActor",
-            "CkActorProxy",
             "CkAnimation",
             "CkAttribute",
             "CkBuildConfig",
